@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourbine — Open Source 360° Tour Platform</title>
+    <meta
+      name="description"
+      content="Tourbine is a self-hosted open source 360° web tour software platform. Build immersive virtual tours with hotspots, scene navigation, and full control over your data."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top">Tourbine</a>
+        <nav aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#stack">Tech</a>
+          <a href="#install">Install</a>
+          <a href="#opensource">Open Source</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <p class="eyebrow">Self-hosted Open Source 360° Web Tour Software</p>
+        <h1>Create immersive 360° virtual tours with full ownership.</h1>
+        <p class="lead">
+          Tourbine helps you build and publish aesthetic, interactive virtual tours for real estate,
+          travel, education, and more — without cloud lock-in.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#install">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+      </section>
+
+      <section id="features" class="container section">
+        <h2>What you can do with Tourbine</h2>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>360° Virtual Tour Viewer</h3>
+            <p>Render panoramic scenes in-browser with smooth rotate/zoom interaction.</p>
+          </article>
+          <article class="card">
+            <h3>Tour Editor Interface</h3>
+            <p>Create scenes, upload panoramas, and configure navigation in a web-based workflow.</p>
+          </article>
+          <article class="card">
+            <h3>Hotspot Support</h3>
+            <p>Add clickable hotspots for scene links, tooltips, and external information.</p>
+          </article>
+          <article class="card">
+            <h3>Scene Navigation Controls</h3>
+            <p>Guide users across rooms and locations with intuitive navigation elements.</p>
+          </article>
+          <article class="card">
+            <h3>Responsive Design</h3>
+            <p>Built to work across desktop, tablet, and mobile touch interfaces.</p>
+          </article>
+          <article class="card">
+            <h3>Optional Authentication</h3>
+            <p>Support private or restricted tours where access control is needed.</p>
+          </article>
+          <article class="card">
+            <h3>Theming & Customization</h3>
+            <p>Brand your experience through templates and style-layer customization.</p>
+          </article>
+          <article class="card">
+            <h3>Media Asset Support</h3>
+            <p>Manage panoramic image assets and linked media in your tours.</p>
+          </article>
+          <article class="card">
+            <h3>Dockerized Deployment</h3>
+            <p>Run consistent self-hosted instances quickly with containerized setup.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack" class="container section">
+        <h2>Project snapshot</h2>
+        <div class="stats-grid">
+          <div class="stat"><span>JavaScript</span><strong>54.4%</strong></div>
+          <div class="stat"><span>EJS</span><strong>44.1%</strong></div>
+          <div class="stat"><span>CSS</span><strong>1.2%</strong></div>
+          <div class="stat"><span>Dockerfile</span><strong>0.3%</strong></div>
+        </div>
+      </section>
+
+      <section id="install" class="container section">
+        <h2>Install Tourbine</h2>
+        <p class="install-lead">
+          Tourbine runs on port <strong>3000</strong> and supports
+          <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>
+          for easy public access without port-forwarding.
+        </p>
+
+        <div class="install-tabs" role="tablist" aria-label="Installation methods">
+          <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-npm" id="btn-npm" onclick="switchTab('npm')">
+            npm (Node.js)
+          </button>
+          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-docker" id="btn-docker" onclick="switchTab('docker')">
+            Docker
+          </button>
+        </div>
+
+        <div id="tab-npm" class="install-panel" role="tabpanel" aria-labelledby="btn-npm">
+          <ol class="install-steps">
+            <li>
+              <span class="step-label">Clone the repository</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>git clone https://github.com/efenow/tourbine.git</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Enter the project directory</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>cd tourbine</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Install dependencies</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm install</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Update dependencies</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm update</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Start the server</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm start</code></pre>
+            </li>
+          </ol>
+          <p class="install-note">Open <strong>http://localhost:3000</strong> in your browser once the server starts.</p>
+        </div>
+
+        <div id="tab-docker" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-docker">
+          <div class="install-req">
+            <strong>Requirement:</strong> Docker with Docker Compose
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Quickstart — build and start in the background</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose up -d --build</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">View logs</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose logs -f</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Stop</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose down</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Upgrade</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose pull
+docker compose up -d --build</code></pre>
+          </div>
+
+          <p class="install-note">
+            Data (SQLite database and uploaded images) is automatically persisted in Docker named
+            volumes <code class="inline-code">tourbine_data</code> and
+            <code class="inline-code">tourbine_uploads</code>, surviving container restarts and upgrades.
+          </p>
+        </div>
+      </section>
+
+      <section id="opensource" class="container section section-highlight">
+        <h2>Open by design</h2>
+        <p>
+          Tourbine is open source and extensible, designed for builders who want flexibility,
+          transparency, and privacy-first deployment.
+        </p>
+        <ul>
+          <li>License: <strong>GNU GPL v3</strong></li>
+          <li>No cloud lock-in, self-host on your own infrastructure</li>
+          <li>Extend and adapt the platform for your workflow</li>
+        </ul>
+        <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">Get the source</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© Tourbine • Self-hosted Open Source 360° Web Tour Software</p>
+        <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">efenow/tourbine</a>
+      </div>
+    </footer>
+    <script>
+      function switchTab(method) {
+        document.querySelectorAll('.install-tab').forEach(function(btn) {
+          var active = btn.id === 'btn-' + method;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.install-panel').forEach(function(panel) {
+          panel.classList.toggle('hidden', panel.id !== 'tab-' + method);
+        });
+      }
+
+      function copyCode(btn) {
+        var code = btn.nextElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(function() {
+          var orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = orig; }, 1500);
+        });
+      }
+    </script>
+  </body>
+</html>
