@@ -26,6 +26,7 @@
         <nav aria-label="Primary">
           <a href="#features">Features</a>
           <a href="#stack">Tech</a>
+          <a href="#install">Install</a>
           <a href="#opensource">Open Source</a>
         </nav>
       </div>
@@ -40,8 +41,8 @@
           travel, education, and more — without cloud lock-in.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          <a class="btn btn-ghost" href="#features">Explore Features</a>
+          <a class="btn btn-primary" href="#install">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </div>
       </section>
 
@@ -97,6 +98,83 @@
         </div>
       </section>
 
+      <section id="install" class="container section">
+        <h2>Install Tourbine</h2>
+        <p class="install-lead">
+          Tourbine runs on port <strong>3000</strong> and supports
+          <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>
+          for easy public access without port-forwarding.
+        </p>
+
+        <div class="install-tabs" role="tablist" aria-label="Installation methods">
+          <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-npm" id="btn-npm" onclick="switchTab('npm')">
+            npm (Node.js)
+          </button>
+          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-docker" id="btn-docker" onclick="switchTab('docker')">
+            Docker
+          </button>
+        </div>
+
+        <div id="tab-npm" class="install-panel" role="tabpanel" aria-labelledby="btn-npm">
+          <ol class="install-steps">
+            <li>
+              <span class="step-label">Clone the repository</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>git clone https://github.com/efenow/tourbine.git</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Enter the project directory</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>cd tourbine</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Install dependencies</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm install</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Update dependencies</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm update</code></pre>
+            </li>
+            <li>
+              <span class="step-label">Start the server</span>
+              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm start</code></pre>
+            </li>
+          </ol>
+          <p class="install-note">Open <strong>http://localhost:3000</strong> in your browser once the server starts.</p>
+        </div>
+
+        <div id="tab-docker" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-docker">
+          <div class="install-req">
+            <strong>Requirement:</strong> Docker with Docker Compose
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Quickstart — build and start in the background</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose up -d --build</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">View logs</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose logs -f</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Stop</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose down</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Upgrade</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose pull
+docker compose up -d --build</code></pre>
+          </div>
+
+          <p class="install-note">
+            Data (SQLite database and uploaded images) is automatically persisted in Docker named
+            volumes <code class="inline-code">tourbine_data</code> and
+            <code class="inline-code">tourbine_uploads</code>, surviving container restarts and upgrades.
+          </p>
+        </div>
+      </section>
+
       <section id="opensource" class="container section section-highlight">
         <h2>Open by design</h2>
         <p>
@@ -118,5 +196,26 @@
         <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">efenow/tourbine</a>
       </div>
     </footer>
+    <script>
+      function switchTab(method) {
+        document.querySelectorAll('.install-tab').forEach(function(btn) {
+          var active = btn.id === 'btn-' + method;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.install-panel').forEach(function(panel) {
+          panel.classList.toggle('hidden', panel.id !== 'tab-' + method);
+        });
+      }
+
+      function copyCode(btn) {
+        var code = btn.nextElementSibling.textContent;
+        navigator.clipboard.writeText(code).then(function() {
+          var orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = orig; }, 1500);
+        });
+      }
+    </script>
   </body>
 </html>
