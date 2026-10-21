@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tourbine — Open Source 360° Tour Platform</title>
+    <title>Tourbine — Self-hosted 360° Virtual Tour Software</title>
     <meta
       name="description"
-      content="Tourbine is a self-hosted open source 360° web tour software platform. Build immersive virtual tours with hotspots, scene navigation, and full control over your data."
+      content="Tourbine is open source, self-hosted software for building 360° virtual tours. Add panoramas, video, hotspots and info points, then publish from your own server. GPL-3.0."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +25,7 @@
         <a class="brand" href="#top">Tourbine</a>
         <nav aria-label="Primary">
           <a href="#features">Features</a>
-          <a href="#stack">Tech</a>
+          <a href="#stack">Stack</a>
           <a href="#install">Install</a>
           <a href="#opensource">Open Source</a>
         </nav>
@@ -34,76 +34,111 @@
 
     <main id="top">
       <section class="hero container">
-        <p class="eyebrow">Self-hosted Open Source 360° Web Tour Software</p>
-        <h1>Create immersive 360° virtual tours with full ownership.</h1>
+        <p class="eyebrow">Self-hosted 360° virtual tour software</p>
+        <h1>Build 360° virtual tours on your own server.</h1>
         <p class="lead">
-          Tourbine helps you build and publish aesthetic, interactive virtual tours for real estate,
-          travel, education, and more — without cloud lock-in.
+          Tourbine is an open source web app for building and publishing interactive 360° tours.
+          Add panoramas, video and info points, arrange the rooms, then publish. No SaaS account,
+          no cloud services, no data leaving your machine.
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#install">Get started</a>
-          <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a class="btn btn-primary" href="#install">Install Tourbine</a>
+          <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
         </div>
       </section>
 
       <section id="features" class="container section">
-        <h2>What you can do with Tourbine</h2>
+        <h2>What Tourbine does</h2>
         <div class="feature-grid">
           <article class="card">
-            <h3>360° Virtual Tour Viewer</h3>
-            <p>Render panoramic scenes in-browser with smooth rotate/zoom interaction.</p>
+            <h3>360° panorama viewer</h3>
+            <p>Rotate, zoom, fullscreen, auto-rotate, and switch rooms from a filmstrip. Built on Pannellum.</p>
           </article>
           <article class="card">
-            <h3>Tour Editor Interface</h3>
-            <p>Create scenes, upload panoramas, and configure navigation in a web-based workflow.</p>
+            <h3>Six room media types</h3>
+            <p>Each room can hold a 360° image, still image, local video, YouTube, Vimeo, or an iframe embed URL.</p>
           </article>
           <article class="card">
-            <h3>Hotspot Support</h3>
-            <p>Add clickable hotspots for scene links, tooltips, and external information.</p>
+            <h3>Room-to-room hotspots</h3>
+            <p>Link rooms with a pitch/yaw position and a label. Visitors click the hotspot to move to the next room.</p>
           </article>
           <article class="card">
-            <h3>Scene Navigation Controls</h3>
-            <p>Guide users across rooms and locations with intuitive navigation elements.</p>
+            <h3>External link hotspots</h3>
+            <p>Point a hotspot at any URL to send visitors out of the tour.</p>
           </article>
           <article class="card">
-            <h3>Responsive Design</h3>
-            <p>Built to work across desktop, tablet, and mobile touch interfaces.</p>
+            <h3>Info points</h3>
+            <p>Attach a title and text to a spot in a 360° or still image. Visitors see it as a tooltip.</p>
           </article>
           <article class="card">
-            <h3>Optional Authentication</h3>
-            <p>Support private or restricted tours where access control is needed.</p>
+            <h3>Click-to-pick placement</h3>
+            <p>Set the initial view and hotspot positions by clicking the panorama in the room editor instead of typing pitch and yaw.</p>
           </article>
           <article class="card">
-            <h3>Theming & Customization</h3>
-            <p>Brand your experience through templates and style-layer customization.</p>
+            <h3>Image privacy editor</h3>
+            <p>Blur or mosaic parts of an image on a canvas brush before upload.</p>
           </article>
           <article class="card">
-            <h3>Media Asset Support</h3>
-            <p>Manage panoramic image assets and linked media in your tours.</p>
+            <h3>Embeddable tours</h3>
+            <p>Every tour has an iframe-friendly <code class="inline-code">/embed</code> view and a copyable embed snippet.</p>
           </article>
           <article class="card">
-            <h3>Dockerized Deployment</h3>
-            <p>Run consistent self-hosted instances quickly with containerized setup.</p>
+            <h3>Tour import and export</h3>
+            <p>Export a tour as a ZIP and import it on another instance. Legacy JSON exports are supported too.</p>
+          </article>
+          <article class="card">
+            <h3>Visitor analytics</h3>
+            <p>All-time, 24-hour and 7-day view counts, plus per-tour totals.</p>
+          </article>
+          <article class="card">
+            <h3>Multi-user dashboard</h3>
+            <p>Three roles: <code class="inline-code">system_admin</code>, <code class="inline-code">admin</code> and <code class="inline-code">user</code>. Create users, change roles and reset passwords.</p>
+          </article>
+          <article class="card">
+            <h3>Read-only JSON API</h3>
+            <p><code class="inline-code">GET /api/tours</code> and <code class="inline-code">GET /api/tours/:slug</code> for headless use.</p>
+          </article>
+          <article class="card">
+            <h3>Cloudflare Tunnel setup</h3>
+            <p>Store the tunnel name, UUID, credentials path and hostname in the dashboard and preview the generated cloudflared config.</p>
+          </article>
+          <article class="card">
+            <h3>Hardened authentication</h3>
+            <p>bcrypt password hashes, session cookies, CSRF tokens on every write, and rate-limited login.</p>
+          </article>
+          <article class="card">
+            <h3>Docker deployment</h3>
+            <p>A Dockerfile and Compose file with named volumes for the database and uploads.</p>
+          </article>
+          <article class="card">
+            <h3>Password recovery CLI</h3>
+            <p><code class="inline-code">node reset-password.js</code> sets a new password straight in the SQLite database, even when the server is stopped.</p>
           </article>
         </div>
       </section>
 
       <section id="stack" class="container section">
-        <h2>Project snapshot</h2>
+        <h2>Stack at a glance</h2>
         <div class="stats-grid">
-          <div class="stat"><span>JavaScript</span><strong>54.4%</strong></div>
-          <div class="stat"><span>EJS</span><strong>44.1%</strong></div>
-          <div class="stat"><span>CSS</span><strong>1.2%</strong></div>
-          <div class="stat"><span>Dockerfile</span><strong>0.3%</strong></div>
+          <div class="stat"><span>Runtime</span><strong>Node.js + Express</strong></div>
+          <div class="stat"><span>Templates</span><strong>EJS</strong></div>
+          <div class="stat"><span>Database</span><strong>SQLite</strong></div>
+          <div class="stat"><span>Viewer</span><strong>Pannellum</strong></div>
+          <div class="stat"><span>Default port</span><strong>3000</strong></div>
+          <div class="stat"><span>License</span><strong>GPL-3.0</strong></div>
         </div>
+        <p class="install-note">
+          No separate database server. Tours live in a single SQLite file and uploads stay in a local
+          folder, so a backup is a copy of two paths. Media files are capped at 100 MB each.
+        </p>
       </section>
 
       <section id="install" class="container section">
         <h2>Install Tourbine</h2>
         <p class="install-lead">
-          Tourbine runs on port <strong>3000</strong> and supports
+          Tourbine runs as one Node.js process on port <strong>3000</strong>. It supports
           <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>
-          for easy public access without port-forwarding.
+          for public access without port-forwarding.
         </p>
 
         <div class="install-tabs" role="tablist" aria-label="Installation methods">
@@ -116,6 +151,12 @@
         </div>
 
         <div id="tab-npm" class="install-panel" role="tabpanel" aria-labelledby="btn-npm">
+          <div class="install-req">
+            <strong>Requirement:</strong> Node.js LTS and npm. The SQLite driver is a native addon,
+            so installing from source needs build tools (python3, make, g++); the Docker image
+            installs them for you.
+          </div>
+
           <ol class="install-steps">
             <li>
               <span class="step-label">Clone the repository</span>
@@ -130,15 +171,32 @@
               <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm install</code></pre>
             </li>
             <li>
-              <span class="step-label">Update dependencies</span>
-              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm update</code></pre>
-            </li>
-            <li>
               <span class="step-label">Start the server</span>
               <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm start</code></pre>
             </li>
           </ol>
-          <p class="install-note">Open <strong>http://localhost:3000</strong> in your browser once the server starts.</p>
+
+          <p class="install-note">
+            Open <strong>http://localhost:3000</strong>. On first run, <code class="inline-code">/dashboard</code>
+            redirects to <code class="inline-code">/dashboard/setup</code>. Create the system admin account there:
+            username at least 3 characters, password at least 8 characters.
+          </p>
+
+          <div class="install-group">
+            <p class="step-label">Development (auto-restart on file change)</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm run dev</code></pre>
+          </div>
+
+          <div class="install-group">
+            <p class="step-label">Run the test suite</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm test</code></pre>
+          </div>
+
+          <p class="install-note">
+            Environment variables: <code class="inline-code">PORT</code> (default 3000),
+            <code class="inline-code">DB_PATH</code> (default <code class="inline-code">data/tourbine.db</code>), and
+            <code class="inline-code">NODE_ENV=production</code> to turn on secure session cookies.
+          </p>
         </div>
 
         <div id="tab-docker" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-docker">
@@ -162,15 +220,18 @@
           </div>
 
           <div class="install-group">
-            <p class="step-label">Upgrade</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose pull
+            <p class="step-label">Update to a newer commit</p>
+            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>git pull
 docker compose up -d --build</code></pre>
           </div>
 
           <p class="install-note">
-            Data (SQLite database and uploaded images) is automatically persisted in Docker named
-            volumes <code class="inline-code">tourbine_data</code> and
-            <code class="inline-code">tourbine_uploads</code>, surviving container restarts and upgrades.
+            The database and uploads are persisted in the named volumes
+            <code class="inline-code">tourbine_data</code> (<code class="inline-code">/app/data</code>) and
+            <code class="inline-code">tourbine_uploads</code> (<code class="inline-code">/app/public/uploads</code>),
+            so they survive container restarts and rebuilds. Compose sets
+            <code class="inline-code">NODE_ENV=production</code> and <code class="inline-code">PORT=3000</code>.
+            For a public hostname, follow the Cloudflare Tunnel section in the repository README.
           </p>
         </div>
       </section>
@@ -178,13 +239,14 @@ docker compose up -d --build</code></pre>
       <section id="opensource" class="container section section-highlight">
         <h2>Open by design</h2>
         <p>
-          Tourbine is open source and extensible, designed for builders who want flexibility,
-          transparency, and privacy-first deployment.
+          Tourbine is GPL-3.0 software. Run it on your own hardware, read the source, and change it
+          to fit your workflow. There is no hosted tier and no telemetry.
         </p>
         <ul>
-          <li>License: <strong>GNU GPL v3</strong></li>
-          <li>No cloud lock-in, self-host on your own infrastructure</li>
-          <li>Extend and adapt the platform for your workflow</li>
+          <li>License: <strong>GPL-3.0</strong></li>
+          <li>Your SQLite database and uploads stay on your own disk</li>
+          <li>No accounts, no cloud services, no lock-in</li>
+          <li>Contribution rules in <code class="inline-code">CODE_OF_CONDUCT.md</code>; report vulnerabilities per <code class="inline-code">SECURITY.md</code></li>
         </ul>
         <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">Get the source</a>
       </section>
@@ -192,7 +254,7 @@ docker compose up -d --build</code></pre>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© Tourbine • Self-hosted Open Source 360° Web Tour Software</p>
+        <p>© Tourbine • Self-hosted 360° virtual tour software</p>
         <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">efenow/tourbine</a>
       </div>
     </footer>
