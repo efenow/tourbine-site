@@ -14,6 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -26,9 +30,9 @@
           <img src="./assets/logos/tourbine-wordmark.png" alt="Tourbine" />
         </a>
         <nav aria-label="Primary">
-          <a href="#features">Features</a>
-          <a href="#install">Install</a>
-          <a href="#opensource">Open Source</a>
+          <a href="#features"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Features</a>
+          <a href="#install"><i class="fa-solid fa-download" aria-hidden="true"></i> Install</a>
+          <a href="#opensource"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Open Source</a>
         </nav>
       </div>
     </header>
@@ -43,8 +47,8 @@
             your own server. Add rooms, connect them with hotspots, and publish when ready.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#install">Install Tourbine</a>
-            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
+            <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
+            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> View source on GitHub</a>
           </div>
         </div>
         <div class="hero-art" aria-label="Tourbine logo">
@@ -58,27 +62,27 @@
         <h2>Everything needed to build a tour</h2>
         <div class="feature-grid">
           <article class="card">
-            <h3>Create rooms</h3>
+            <h3><i class="fa-solid fa-cube" aria-hidden="true"></i> Create rooms</h3>
             <p>Use 360° images, stills, local video, YouTube, Vimeo, or iframe embeds.</p>
           </article>
           <article class="card">
-            <h3>Connect the experience</h3>
+            <h3><i class="fa-solid fa-route" aria-hidden="true"></i> Connect the experience</h3>
             <p>Link rooms with labeled hotspots so visitors can move naturally through a space.</p>
           </article>
           <article class="card">
-            <h3>Add useful context</h3>
+            <h3><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Add useful context</h3>
             <p>Place info points on images and link visitors to external pages when needed.</p>
           </article>
           <article class="card">
-            <h3>Edit visually</h3>
+            <h3><i class="fa-solid fa-crosshairs" aria-hidden="true"></i> Edit visually</h3>
             <p>Choose initial views and hotspot positions by clicking directly on the image.</p>
           </article>
           <article class="card">
-            <h3>Protect your media</h3>
+            <h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Protect your media</h3>
             <p>Blur or mosaic sensitive areas before upload with the built-in image privacy editor.</p>
           </article>
           <article class="card">
-            <h3>Share and manage</h3>
+            <h3><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share and manage</h3>
             <p>Embed tours, export and import projects, track visits, and manage multiple users.</p>
           </article>
         </div>
@@ -96,15 +100,31 @@
         </p>
 
         <div class="install-tabs" role="tablist" aria-label="Installation methods">
-          <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-npm" id="btn-npm" onclick="switchTab('npm')">
-            npm (Node.js)
+          <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-linux" id="btn-linux" onclick="switchTab('linux')">
+            <i class="fa-brands fa-linux" aria-hidden="true"></i> Linux
+          </button>
+          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-windows" id="btn-windows" onclick="switchTab('windows')">
+            <i class="fa-brands fa-windows" aria-hidden="true"></i> Windows
+          </button>
+          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-npm" id="btn-npm" onclick="switchTab('npm')">
+            <i class="fa-brands fa-node-js" aria-hidden="true"></i> npm
           </button>
           <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-docker" id="btn-docker" onclick="switchTab('docker')">
-            Docker
+            <i class="fa-brands fa-docker" aria-hidden="true"></i> Docker
           </button>
         </div>
 
-        <div id="tab-npm" class="install-panel" role="tabpanel" aria-labelledby="btn-npm">
+        <div id="tab-linux" class="install-panel" role="tabpanel" aria-labelledby="btn-linux">
+          <div class="install-req"><i class="fa-brands fa-linux" aria-hidden="true"></i> <strong>Linux quick install:</strong> run this command in your terminal.</div>
+          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
+        </div>
+
+        <div id="tab-windows" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-windows">
+          <div class="install-req"><i class="fa-brands fa-windows" aria-hidden="true"></i> <strong>PowerShell quick install:</strong> run PowerShell as your user.</div>
+          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>irm https://get.tourbine.efenow.xyz/install.ps1 | iex</code></pre>
+        </div>
+
+        <div id="tab-npm" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-npm">
           <div class="install-req">
             <strong>Requirement:</strong> Node.js LTS and npm. The SQLite driver is a native addon,
             so installing from source needs build tools (python3, make, g++); the Docker image
@@ -187,7 +207,7 @@ docker compose up -d --build</code></pre>
 
       <section id="opensource" class="container section section-highlight">
         <p class="eyebrow">Your server. Your files.</p>
-        <h2>Open source without lock-in</h2>
+        <h2><i class="fa-solid fa-lock-open" aria-hidden="true"></i> Open source without lock-in</h2>
         <p>
           Tourbine is GPL-3.0 software. Keep the database and uploaded media on your own hardware,
           inspect the source, and adapt it to your workflow. There is no hosted tier or telemetry.
@@ -198,18 +218,18 @@ docker compose up -d --build</code></pre>
           <li>No accounts, no cloud services, no lock-in</li>
           <li>Contribution rules in <code class="inline-code">CODE_OF_CONDUCT.md</code>; report vulnerabilities per <code class="inline-code">SECURITY.md</code></li>
         </ul>
-        <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">Get the source</a>
+        <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Get the source</a>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>© Tourbine • Self-hosted 360° virtual tour software</p>
-        <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">efenow/tourbine</a>
+        <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> efenow/tourbine</a>
       </div>
     </footer>
     <script>
-      function switchTab(method) {
+       function switchTab(method) {
         document.querySelectorAll('.install-tab').forEach(function(btn) {
           var active = btn.id === 'btn-' + method;
           btn.classList.toggle('active', active);
