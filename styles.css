@@ -74,10 +74,21 @@ body {
 }
 
 .brand {
-  color: #fff;
+  align-items: center;
+  display: inline-flex;
+  height: 2.8rem;
+  overflow: hidden;
   text-decoration: none;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  width: 10rem;
+}
+
+.brand img {
+  display: block;
+  height: 5rem;
+  max-width: none;
+  filter: brightness(0) invert(1);
+  transform: translateX(-0.08rem);
+  width: 10rem;
 }
 
 nav {
@@ -96,7 +107,48 @@ nav a:hover {
 }
 
 .hero {
+  align-items: center;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
   padding: 5.5rem 0 3rem;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-art {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 32px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  display: flex;
+  justify-content: center;
+  min-height: 330px;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(2deg);
+}
+
+.hero-art img {
+  position: relative;
+  width: 82%;
+  z-index: 1;
+}
+
+.hero-art-glow {
+  background: #45d6ff;
+  border-radius: 50%;
+  filter: blur(48px);
+  height: 45%;
+  opacity: 0.3;
+  position: absolute;
+  right: -10%;
+  top: -10%;
+  width: 55%;
 }
 
 .eyebrow {
@@ -198,27 +250,9 @@ h1 {
   color: var(--muted);
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.8rem;
-}
-
-.stat {
-  background: var(--panel-strong);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1rem;
-}
-
-.stat span {
-  display: block;
+.section-note {
   color: var(--muted);
-  margin-bottom: 0.3rem;
-}
-
-.stat strong {
-  font-size: 1.3rem;
+  margin: 1rem 0 0;
 }
 
 .section-highlight {
@@ -265,7 +299,13 @@ h1 {
   }
 
   .hero {
+    grid-template-columns: 1fr;
     padding-top: 4rem;
+  }
+
+  .hero-art {
+    min-height: 250px;
+    transform: none;
   }
 
   .section-highlight {

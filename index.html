@@ -22,10 +22,11 @@
 
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="#top">Tourbine</a>
+        <a class="brand" href="#top" aria-label="Tourbine home">
+          <img src="./assets/logos/tourbine-wordmark.png" alt="Tourbine" />
+        </a>
         <nav aria-label="Primary">
           <a href="#features">Features</a>
-          <a href="#stack">Stack</a>
           <a href="#install">Install</a>
           <a href="#opensource">Open Source</a>
         </nav>
@@ -34,109 +35,62 @@
 
     <main id="top">
       <section class="hero container">
-        <p class="eyebrow">Self-hosted 360° virtual tour software</p>
-        <h1>Build 360° virtual tours on your own server.</h1>
-        <p class="lead">
-          Tourbine is an open source web app for building and publishing interactive 360° tours.
-          Add panoramas, video and info points, arrange the rooms, then publish. No SaaS account,
-          no cloud services, no data leaving your machine.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#install">Install Tourbine</a>
-          <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
+        <div class="hero-copy">
+          <p class="eyebrow">Self-hosted 360° virtual tours</p>
+          <h1>Publish interactive tours without giving up your data.</h1>
+          <p class="lead">
+            Tourbine is an open source web app for creating, managing, and sharing virtual tours from
+            your own server. Add rooms, connect them with hotspots, and publish when ready.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#install">Install Tourbine</a>
+            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Tourbine logo">
+          <div class="hero-art-glow" aria-hidden="true"></div>
+          <img src="./assets/logos/tourbine-mark.png" alt="" />
         </div>
       </section>
 
       <section id="features" class="container section">
-        <h2>What Tourbine does</h2>
+        <p class="eyebrow">Built for real tour projects</p>
+        <h2>Everything needed to build a tour</h2>
         <div class="feature-grid">
           <article class="card">
-            <h3>360° panorama viewer</h3>
-            <p>Rotate, zoom, fullscreen, auto-rotate, and switch rooms from a filmstrip. Built on Pannellum.</p>
+            <h3>Create rooms</h3>
+            <p>Use 360° images, stills, local video, YouTube, Vimeo, or iframe embeds.</p>
           </article>
           <article class="card">
-            <h3>Six room media types</h3>
-            <p>Each room can hold a 360° image, still image, local video, YouTube, Vimeo, or an iframe embed URL.</p>
+            <h3>Connect the experience</h3>
+            <p>Link rooms with labeled hotspots so visitors can move naturally through a space.</p>
           </article>
           <article class="card">
-            <h3>Room-to-room hotspots</h3>
-            <p>Link rooms with a pitch/yaw position and a label. Visitors click the hotspot to move to the next room.</p>
+            <h3>Add useful context</h3>
+            <p>Place info points on images and link visitors to external pages when needed.</p>
           </article>
           <article class="card">
-            <h3>External link hotspots</h3>
-            <p>Point a hotspot at any URL to send visitors out of the tour.</p>
+            <h3>Edit visually</h3>
+            <p>Choose initial views and hotspot positions by clicking directly on the image.</p>
           </article>
           <article class="card">
-            <h3>Info points</h3>
-            <p>Attach a title and text to a spot in a 360° or still image. Visitors see it as a tooltip.</p>
+            <h3>Protect your media</h3>
+            <p>Blur or mosaic sensitive areas before upload with the built-in image privacy editor.</p>
           </article>
           <article class="card">
-            <h3>Click-to-pick placement</h3>
-            <p>Set the initial view and hotspot positions by clicking the panorama in the room editor instead of typing pitch and yaw.</p>
-          </article>
-          <article class="card">
-            <h3>Image privacy editor</h3>
-            <p>Blur or mosaic parts of an image on a canvas brush before upload.</p>
-          </article>
-          <article class="card">
-            <h3>Embeddable tours</h3>
-            <p>Every tour has an iframe-friendly <code class="inline-code">/embed</code> view and a copyable embed snippet.</p>
-          </article>
-          <article class="card">
-            <h3>Tour import and export</h3>
-            <p>Export a tour as a ZIP and import it on another instance. Legacy JSON exports are supported too.</p>
-          </article>
-          <article class="card">
-            <h3>Visitor analytics</h3>
-            <p>All-time, 24-hour and 7-day view counts, plus per-tour totals.</p>
-          </article>
-          <article class="card">
-            <h3>Multi-user dashboard</h3>
-            <p>Three roles: <code class="inline-code">system_admin</code>, <code class="inline-code">admin</code> and <code class="inline-code">user</code>. Create users, change roles and reset passwords.</p>
-          </article>
-          <article class="card">
-            <h3>Read-only JSON API</h3>
-            <p><code class="inline-code">GET /api/tours</code> and <code class="inline-code">GET /api/tours/:slug</code> for headless use.</p>
-          </article>
-          <article class="card">
-            <h3>Cloudflare Tunnel setup</h3>
-            <p>Store the tunnel name, UUID, credentials path and hostname in the dashboard and preview the generated cloudflared config.</p>
-          </article>
-          <article class="card">
-            <h3>Hardened authentication</h3>
-            <p>bcrypt password hashes, session cookies, CSRF tokens on every write, and rate-limited login.</p>
-          </article>
-          <article class="card">
-            <h3>Docker deployment</h3>
-            <p>A Dockerfile and Compose file with named volumes for the database and uploads.</p>
-          </article>
-          <article class="card">
-            <h3>Password recovery CLI</h3>
-            <p><code class="inline-code">node reset-password.js</code> sets a new password straight in the SQLite database, even when the server is stopped.</p>
+            <h3>Share and manage</h3>
+            <p>Embed tours, export and import projects, track visits, and manage multiple users.</p>
           </article>
         </div>
-      </section>
-
-      <section id="stack" class="container section">
-        <h2>Stack at a glance</h2>
-        <div class="stats-grid">
-          <div class="stat"><span>Runtime</span><strong>Node.js + Express</strong></div>
-          <div class="stat"><span>Templates</span><strong>EJS</strong></div>
-          <div class="stat"><span>Database</span><strong>SQLite</strong></div>
-          <div class="stat"><span>Viewer</span><strong>Pannellum</strong></div>
-          <div class="stat"><span>Default port</span><strong>3000</strong></div>
-          <div class="stat"><span>License</span><strong>GPL-3.0</strong></div>
-        </div>
-        <p class="install-note">
-          No separate database server. Tours live in a single SQLite file and uploads stay in a local
-          folder, so a backup is a copy of two paths. Media files are capped at 100 MB each.
-        </p>
+        <p class="section-note">Tours can be embedded in other sites. A read-only JSON API is available for headless use.</p>
       </section>
 
       <section id="install" class="container section">
-        <h2>Install Tourbine</h2>
+        <p class="eyebrow">Ready to run locally</p>
+        <h2>Install in a few commands</h2>
         <p class="install-lead">
-          Tourbine runs as one Node.js process on port <strong>3000</strong>. It supports
+          Tourbine runs as one Node.js process on port <strong>3000</strong>. Choose npm for a direct install,
+          or Docker for an isolated setup. It supports
           <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>
           for public access without port-forwarding.
         </p>
@@ -187,11 +141,6 @@
             <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm run dev</code></pre>
           </div>
 
-          <div class="install-group">
-            <p class="step-label">Run the test suite</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm test</code></pre>
-          </div>
-
           <p class="install-note">
             Environment variables: <code class="inline-code">PORT</code> (default 3000),
             <code class="inline-code">DB_PATH</code> (default <code class="inline-code">data/tourbine.db</code>), and
@@ -237,10 +186,11 @@ docker compose up -d --build</code></pre>
       </section>
 
       <section id="opensource" class="container section section-highlight">
-        <h2>Open by design</h2>
+        <p class="eyebrow">Your server. Your files.</p>
+        <h2>Open source without lock-in</h2>
         <p>
-          Tourbine is GPL-3.0 software. Run it on your own hardware, read the source, and change it
-          to fit your workflow. There is no hosted tier and no telemetry.
+          Tourbine is GPL-3.0 software. Keep the database and uploaded media on your own hardware,
+          inspect the source, and adapt it to your workflow. There is no hosted tier or telemetry.
         </p>
         <ul>
           <li>License: <strong>GPL-3.0</strong></li>
