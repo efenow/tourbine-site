@@ -90,19 +90,19 @@ body {
 .brand {
   align-items: center;
   display: inline-flex;
-  height: 2.8rem;
+  height: 3rem;
   overflow: hidden;
   text-decoration: none;
-  width: 10rem;
+  width: 11rem;
 }
 
 .brand img {
   display: block;
-  height: 5rem;
+  height: 5.5rem;
   max-width: none;
   filter: brightness(0) invert(1);
   transform: translateX(-0.08rem);
-  width: 10rem;
+  width: 11rem;
 }
 
 nav {
