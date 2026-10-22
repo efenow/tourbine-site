@@ -103,6 +103,9 @@
           <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-linux" id="btn-linux" onclick="switchTab('linux')">
             <i class="fa-brands fa-linux" aria-hidden="true"></i> Linux
           </button>
+          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-macos" id="btn-macos" onclick="switchTab('macos')">
+            <i class="fa-brands fa-apple" aria-hidden="true"></i> macOS
+          </button>
           <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-windows" id="btn-windows" onclick="switchTab('windows')">
             <i class="fa-brands fa-windows" aria-hidden="true"></i> Windows
           </button>
@@ -116,6 +119,11 @@
 
         <div id="tab-linux" class="install-panel" role="tabpanel" aria-labelledby="btn-linux">
           <div class="install-req"><i class="fa-brands fa-linux" aria-hidden="true"></i> <strong>Linux quick install:</strong> run this command in your terminal.</div>
+          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
+        </div>
+
+        <div id="tab-macos" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-macos">
+          <div class="install-req"><i class="fa-brands fa-apple" aria-hidden="true"></i> <strong>macOS quick install:</strong> run this command in Terminal.</div>
           <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
         </div>
 
