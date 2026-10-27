@@ -342,9 +342,18 @@ h1 {
 
 
 @media (max-width: 700px) {
+  .nav {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+
   nav {
-    gap: 0.65rem;
-    font-size: 0.94rem;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.8rem;
+    justify-content: space-between;
+    font-size: 0.88rem;
   }
 
   .hero {
@@ -359,6 +368,19 @@ h1 {
 
   .section-highlight {
     padding: 1.2rem;
+  }
+
+  .install-tabs {
+    flex-wrap: wrap;
+  }
+
+  .install-tab {
+    flex: 1 1 auto;
+    padding-inline: 0.8rem;
+  }
+
+  .install-panel {
+    padding: 1rem;
   }
 }
 
