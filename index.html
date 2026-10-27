@@ -3,11 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tourbine — Self-hosted 360° Virtual Tour Software</title>
+    <title>Tourbine: Free, Open Source 360° Virtual Tour Software</title>
     <meta
       name="description"
-      content="Tourbine is open source, self-hosted software for building 360° virtual tours. Add panoramas, video, hotspots and info points, then publish from your own server. GPL-3.0."
+      content="Tourbine is free, open source, self-hosted 360° virtual tour software. Create interactive virtual tours with panoramas, video, hotspots and info points on your own server."
     />
+    <link rel="canonical" href="https://tourbine.efenow.xyz/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#060714" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tourbine" />
+    <meta property="og:title" content="Tourbine: Free, Open Source 360° Virtual Tour Software" />
+    <meta property="og:description" content="Create and publish interactive 360° virtual tours with free, open source, self-hosted software." />
+    <meta property="og:url" content="https://tourbine.efenow.xyz/" />
+    <meta property="og:image" content="https://tourbine.efenow.xyz/assets/logos/tourbine-stacked.png" />
+    <meta property="og:image:alt" content="Tourbine open source virtual tour software" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Tourbine: Free, Open Source 360° Virtual Tour Software" />
+    <meta name="twitter:description" content="Create and publish interactive 360° virtual tours on your own server." />
+    <meta name="twitter:image" content="https://tourbine.efenow.xyz/assets/logos/tourbine-stacked.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="icon" type="image/png" href="./assets/logos/tourbine-favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,6 +49,7 @@
           <a href="#features"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Features</a>
           <a href="#install"><i class="fa-solid fa-download" aria-hidden="true"></i> Install</a>
           <a href="#opensource"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Open Source</a>
+          <a href="#faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</a>
         </nav>
       </div>
     </header>
@@ -42,10 +58,10 @@
       <section class="hero container">
         <div class="hero-copy">
           <p class="eyebrow">Self-hosted 360° virtual tours</p>
-          <h1>Publish interactive tours without giving up your data.</h1>
+          <h1>Free, open source 360° virtual tour software</h1>
           <p class="lead">
-            Tourbine is an open source web app for creating, managing, and sharing virtual tours from
-            your own server. Add rooms, connect them with hotspots, and publish when ready.
+            Tourbine is self-hosted virtual tour software for creating, managing, and sharing interactive
+            tours from your own server. Add rooms, connect them with hotspots, and publish when ready.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
@@ -60,7 +76,7 @@
 
       <section id="features" class="container section">
         <p class="eyebrow">Built for real tour projects</p>
-        <h2>Everything needed to build a tour</h2>
+        <h2>Everything needed to build a 360° virtual tour</h2>
         <div class="feature-grid">
           <article class="card">
             <h3><i class="fa-solid fa-cube" aria-hidden="true"></i> Create rooms</h3>
@@ -229,6 +245,25 @@ docker compose up -d --build</code></pre>
         </ul>
         <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Get the source</a>
       </section>
+
+      <section id="faq" class="container section">
+        <p class="eyebrow">Virtual tour software FAQ</p>
+        <h2>Why use Tourbine?</h2>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Is Tourbine free virtual tour software?</h3>
+            <p>Yes. Tourbine is free and licensed under GPL-3.0. Run it on your own hardware without a hosted subscription.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Is Tourbine open source and self-hosted?</h3>
+            <p>Yes. Tourbine is open source self-hosted software. You keep your database and uploaded media on your own server.</p>
+          </article>
+          <article class="faq-item">
+            <h3>What can Tourbine create?</h3>
+            <p>Create interactive 360° virtual tours with panoramic images, video, hotspots, information points, embeds, and shareable links.</p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -256,6 +291,23 @@ docker compose up -d --build</code></pre>
           btn.textContent = 'Copied!';
           setTimeout(function() { btn.textContent = orig; }, 1500);
         });
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tourbine",
+        "url": "https://tourbine.efenow.xyz/",
+        "description": "Free, open source, self-hosted software for creating and publishing interactive 360° virtual tours.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Linux, macOS, Windows",
+        "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+        "downloadUrl": "https://github.com/efenow/tourbine",
+        "codeRepository": "https://github.com/efenow/tourbine",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Organization", "name": "Tourbine", "url": "https://tourbine.efenow.xyz/" }
       }
     </script>
   </body>

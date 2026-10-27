@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tourbine.efenow.xyz/sitemap.xml

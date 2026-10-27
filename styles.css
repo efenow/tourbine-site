@@ -282,6 +282,28 @@ h1 {
   margin: 1rem 0 0;
 }
 
+.faq-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.faq-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.faq-item h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.04rem;
+}
+
+.faq-item p {
+  color: var(--muted);
+  margin: 0;
+}
+
 .section-highlight {
   margin-top: 1rem;
   background: linear-gradient(180deg, rgba(124, 140, 255, 0.14), rgba(69, 214, 255, 0.05));
