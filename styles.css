@@ -789,6 +789,21 @@ h1 {
   font-weight: 600;
   padding: 0.5rem 1rem;
   transition: 0.15s ease;
+  position: relative;
+}
+
+.install-tab::after {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  border-radius: 999px;
+  bottom: 0.12rem;
+  content: '';
+  height: 2px;
+  left: 20%;
+  opacity: 0;
+  position: absolute;
+  right: 20%;
+  transform: scaleX(0.45);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .install-tab i {
@@ -804,6 +819,11 @@ h1 {
   color: #fff;
 }
 
+.install-tab.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .os-detected {
   color: #9be8c4;
   font-size: 0.85rem;
@@ -814,51 +834,33 @@ h1 {
   margin-right: 0.3rem;
 }
 
+.install-panels {
+  display: grid;
+}
+
+.install-panel {
+  grid-area: 1 / 1;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
 .install-panel.hidden {
   display: none;
 }
 
 .install-panel.panel-exit {
-  animation: install-panel-exit 0.2s ease forwards;
+  opacity: 0;
+  transform: translateY(-0.35rem);
   pointer-events: none;
 }
 
-.install-panel.panel-enter-forward,
-.install-panel.panel-enter-back {
-  animation: install-panel-enter-forward 0.22s ease both;
+.install-panel.panel-enter {
+  opacity: 0;
+  transform: translateY(0.35rem);
 }
 
-.install-panel.panel-enter-back {
-  animation-name: install-panel-enter-back;
-}
-
-@keyframes install-panel-exit {
-  to {
-    opacity: 0;
-    transform: translateY(-0.45rem) scale(0.99);
-  }
-}
-
-@keyframes install-panel-enter-forward {
-  from {
-    opacity: 0;
-    transform: translateY(0.45rem) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes install-panel-enter-back {
-  from {
-    opacity: 0;
-    transform: translateY(-0.45rem) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.install-panel.panel-enter-active {
+  opacity: 1;
+  transform: none;
 }
 
 .term-label {

@@ -195,17 +195,19 @@
       return;
     }
 
-    var forward = os === 'windows';
     activePanel.classList.add('panel-exit');
     nextPanel.classList.remove('hidden');
-    nextPanel.classList.add(forward ? 'panel-enter-forward' : 'panel-enter-back');
+    nextPanel.classList.add('panel-enter');
+    requestAnimationFrame(function () {
+      nextPanel.classList.add('panel-enter-active');
+    });
     panelTimer = setTimeout(function () {
       activePanel.classList.add('hidden');
       activePanel.classList.remove('panel-exit');
-      nextPanel.classList.remove('panel-enter-forward', 'panel-enter-back');
+      nextPanel.classList.remove('panel-enter', 'panel-enter-active');
       activePanel = nextPanel;
       panelTimer = null;
-    }, 220);
+    }, 260);
   }
 
   tabs.forEach(function (btn, i) {
