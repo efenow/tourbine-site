@@ -34,9 +34,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+    <link rel="preload" as="image" href="./assets/pano/cafeteria-preview.jpg" />
     <link rel="stylesheet" href="./styles.css" />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
     <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
 
@@ -46,222 +50,380 @@
           <img src="./assets/logos/tourbine-wordmark.png" alt="Tourbine" />
         </a>
         <nav aria-label="Primary">
-          <a href="#features"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> Features</a>
+          <a href="#features"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Features</a>
           <a href="#install"><i class="fa-solid fa-download" aria-hidden="true"></i> Install</a>
+          <a href="#embed"><i class="fa-solid fa-code" aria-hidden="true"></i> Embed &amp; API</a>
           <a href="#opensource"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Open Source</a>
           <a href="#faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</a>
         </nav>
+        <a class="nav-gh" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer" aria-label="Tourbine on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span> GitHub</span></a>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero container">
-        <div class="hero-copy">
-          <p class="eyebrow">Self-hosted 360° virtual tours</p>
-          <h1>Free, open source 360° virtual tour software</h1>
-          <p class="lead">
-            Tourbine is self-hosted virtual tour software for creating, managing, and sharing interactive
-            tours from your own server. Add rooms, connect them with hotspots, and publish when ready.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
-            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> View source on GitHub</a>
+    <main id="main">
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <div id="pano" class="hero-viewer" aria-label="Interactive 360° panorama. Drag to look around."></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+
+        <div class="container hero-inner">
+          <div class="hero-card">
+            <p class="eyebrow">Self-hosted 360° virtual tours</p>
+            <h1 id="hero-title">Free, open source 360° virtual tour software</h1>
+            <p class="lead">
+              Tourbine is self-hosted virtual tour software for creating, managing, and sharing interactive
+              tours from your own server. Add rooms, connect them with hotspots, and publish when ready.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
+              <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> View source on GitHub</a>
+            </div>
+
+            <div class="tour-stops" hidden>
+              <p class="stops-label"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Drag the view, or jump to a stop:</p>
+              <div class="stops" role="group" aria-label="Panorama stops"></div>
+            </div>
           </div>
         </div>
-        <div class="hero-art" aria-label="Tourbine logo">
-          <div class="hero-art-glow" aria-hidden="true"></div>
-          <img src="./assets/logos/tourbine-mark.png" alt="" />
+
+        <div class="hero-controls" hidden>
+          <button type="button" class="icon-btn" id="pano-rotate" aria-pressed="true" aria-label="Pause rotation"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
+          <button type="button" class="icon-btn" id="pano-full" aria-label="View panorama fullscreen"><i class="fa-solid fa-expand" aria-hidden="true"></i></button>
         </div>
+        <p class="hero-credit">This preview runs on <a href="https://pannellum.org/" target="_blank" rel="noopener noreferrer">Pannellum</a>, the 360° viewer Tourbine uses.</p>
+      </section>
+
+      <section class="container stats" aria-label="Tourbine at a glance">
+        <div class="stat"><strong>GPL-3.0</strong><span>Open source license</span></div>
+        <div class="stat"><strong>6</strong><span>Media types per room</span></div>
+        <div class="stat"><strong>1</strong><span>Node.js process</span></div>
+        <div class="stat"><strong>0</strong><span>Hosted tiers or telemetry</span></div>
       </section>
 
       <section id="features" class="container section">
-        <p class="eyebrow">Built for real tour projects</p>
+        <p class="eyebrow">From upload to published tour</p>
         <h2>Everything needed to build a 360° virtual tour</h2>
-        <div class="feature-grid">
-          <article class="card">
-            <h3><i class="fa-solid fa-cube" aria-hidden="true"></i> Create rooms</h3>
-            <p>Use 360° images, stills, local video, YouTube, Vimeo, or iframe embeds.</p>
+        <p class="section-lead">One dashboard covers the whole job: build the rooms, publish the tour, and run it for your team.</p>
+
+        <div class="flow">
+          <article class="flow-card reveal">
+            <div class="flow-head">
+              <span class="flow-num">01</span>
+              <h3><i class="fa-solid fa-cube" aria-hidden="true"></i> Build</h3>
+            </div>
+            <p>Rooms take any of six media types:</p>
+            <ul class="chips" aria-label="Supported media types">
+              <li><i class="fa-solid fa-street-view" aria-hidden="true"></i> 360° image</li>
+              <li><i class="fa-regular fa-image" aria-hidden="true"></i> Still image</li>
+              <li><i class="fa-solid fa-video" aria-hidden="true"></i> Local video</li>
+              <li><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</li>
+              <li><i class="fa-brands fa-vimeo-v" aria-hidden="true"></i> Vimeo</li>
+              <li><i class="fa-solid fa-code" aria-hidden="true"></i> iframe embed</li>
+            </ul>
+            <ul class="checks">
+              <li>Link rooms with labeled hotspots, or point hotspots to external URLs</li>
+              <li>Place info points on 360° and still images</li>
+              <li>Click in the panorama to set the initial view and hotspot positions</li>
+              <li>Blur or mosaic sensitive areas before upload</li>
+              <li>Reorder rooms, pick a default room, set auto-rotate and field of view</li>
+            </ul>
           </article>
-          <article class="card">
-            <h3><i class="fa-solid fa-route" aria-hidden="true"></i> Connect the experience</h3>
-            <p>Link rooms with labeled hotspots so visitors can move naturally through a space.</p>
+
+          <article class="flow-card reveal">
+            <div class="flow-head">
+              <span class="flow-num">02</span>
+              <h3><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Publish</h3>
+            </div>
+            <p>Share a link, embed the tour, or read it as JSON.</p>
+            <ul class="checks">
+              <li>Public tour list and full-screen tour pages</li>
+              <li>Embed mode with a copyable <code class="inline-code">&lt;iframe&gt;</code> snippet</li>
+              <li>Optional cover image per tour</li>
+              <li>Read-only JSON API for headless use</li>
+              <li>Cloudflare Tunnel settings page for public access without port-forwarding</li>
+            </ul>
           </article>
-          <article class="card">
-            <h3><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Add useful context</h3>
-            <p>Place info points on images and link visitors to external pages when needed.</p>
-          </article>
-          <article class="card">
-            <h3><i class="fa-solid fa-crosshairs" aria-hidden="true"></i> Edit visually</h3>
-            <p>Choose initial views and hotspot positions by clicking directly on the image.</p>
-          </article>
-          <article class="card">
-            <h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Protect your media</h3>
-            <p>Blur or mosaic sensitive areas before upload with the built-in image privacy editor.</p>
-          </article>
-          <article class="card">
-            <h3><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share and manage</h3>
-            <p>Embed tours, export and import projects, track visits, and manage multiple users.</p>
+
+          <article class="flow-card reveal">
+            <div class="flow-head">
+              <span class="flow-num">03</span>
+              <h3><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Run</h3>
+            </div>
+            <p>Manage people, numbers, and backups.</p>
+            <ul class="checks">
+              <li>Users with System admin, Admin, and User roles</li>
+              <li>Views for all time, 24 hours, and 7 days, per tour</li>
+              <li>Export and import whole tours as ZIP files</li>
+              <li>Duplicate a tour's structure in one click</li>
+              <li>Reset a lost password from the command line</li>
+            </ul>
           </article>
         </div>
-        <p class="section-note">Tours can be embedded in other sites. A read-only JSON API is available for headless use.</p>
+
+        <div class="secure reveal">
+          <h3><i class="fa-solid fa-user-shield" aria-hidden="true"></i> Secure by default</h3>
+          <ul>
+            <li><strong>bcrypt</strong> password hashes, cost factor 12</li>
+            <li><strong>CSRF</strong> token checks on every write request</li>
+            <li><strong>10</strong> login attempts per 15 minutes per IP</li>
+            <li><strong>httpOnly</strong>, <code class="inline-code">sameSite: 'strict'</code> session cookies, secure in production</li>
+          </ul>
+        </div>
       </section>
 
       <section id="install" class="container section">
-        <p class="eyebrow">Ready to run locally</p>
-        <h2>Install in a few commands</h2>
-        <p class="install-lead">
-          Tourbine runs as one Node.js process on port <strong>3000</strong>. Choose npm for a direct install,
-          or Docker for an isolated setup. It supports
-          <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>
-          for public access without port-forwarding.
+        <p class="eyebrow">Ready to run on your machine</p>
+        <h2>Install in one command</h2>
+        <p class="section-lead">
+          Tourbine runs as one Node.js process on port <strong>3000</strong>. The installer handles the setup
+          and keeps your existing Docker volumes with the database and uploads.
         </p>
 
-        <div class="install-tabs" role="tablist" aria-label="Installation methods">
-          <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-linux" id="btn-linux" onclick="switchTab('linux')">
-            <i class="fa-brands fa-linux" aria-hidden="true"></i> Linux
-          </button>
-          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-macos" id="btn-macos" onclick="switchTab('macos')">
-            <i class="fa-brands fa-apple" aria-hidden="true"></i> macOS
-          </button>
-          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-windows" id="btn-windows" onclick="switchTab('windows')">
-            <i class="fa-brands fa-windows" aria-hidden="true"></i> Windows
-          </button>
-          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-npm" id="btn-npm" onclick="switchTab('npm')">
-            <i class="fa-brands fa-node-js" aria-hidden="true"></i> npm
-          </button>
-          <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-docker" id="btn-docker" onclick="switchTab('docker')">
-            <i class="fa-brands fa-docker" aria-hidden="true"></i> Docker
-          </button>
+        <div class="install-box reveal">
+          <div class="install-top">
+            <div class="install-tabs" role="tablist" aria-label="Operating system">
+              <button class="install-tab active" role="tab" aria-selected="true" aria-controls="tab-unix" id="btn-unix" data-os="unix">
+                <i class="fa-brands fa-linux" aria-hidden="true"></i><i class="fa-brands fa-apple" aria-hidden="true"></i> Linux &amp; macOS
+              </button>
+              <button class="install-tab" role="tab" aria-selected="false" aria-controls="tab-windows" id="btn-windows" data-os="windows" tabindex="-1">
+                <i class="fa-brands fa-windows" aria-hidden="true"></i> Windows
+              </button>
+            </div>
+            <span class="os-detected" id="os-detected" hidden></span>
+          </div>
+
+          <div id="tab-unix" class="install-panel" role="tabpanel" aria-labelledby="btn-unix">
+            <p class="term-label">Run in your terminal</p>
+            <pre class="codeblock codeblock-lg"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code><span class="prompt" aria-hidden="true">$ </span>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
+          </div>
+
+          <div id="tab-windows" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-windows">
+            <p class="term-label">Run in PowerShell as your user</p>
+            <pre class="codeblock codeblock-lg"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code><span class="prompt" aria-hidden="true">PS&gt; </span>irm https://get.tourbine.efenow.xyz/install.ps1 | iex</code></pre>
+          </div>
+
+          <p class="choose-label">The installer then asks you to pick a method:</p>
+          <div class="methods">
+            <div class="method">
+              <h3><i class="fa-brands fa-docker" aria-hidden="true"></i> Docker <span class="tag">Servers &amp; production</span></h3>
+              <p>Handles native dependencies and keeps the app isolated. Recommended on Windows production systems; needs Docker Desktop or another Docker-compatible engine.</p>
+            </div>
+            <div class="method">
+              <h3><i class="fa-brands fa-node-js" aria-hidden="true"></i> npm <span class="tag">Local development</span></h3>
+              <p>Useful on macOS, Linux development machines, and WSL. Needs Node.js, npm, and build tools for <code class="inline-code">better-sqlite3</code>.</p>
+            </div>
+          </div>
         </div>
 
-        <div id="tab-linux" class="install-panel" role="tabpanel" aria-labelledby="btn-linux">
-          <div class="install-req"><i class="fa-brands fa-linux" aria-hidden="true"></i> <strong>Linux quick install:</strong> run this command in your terminal.</div>
-          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
-        </div>
+        <h3 class="sub-title">Then, first run</h3>
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="tl-num" aria-hidden="true">1</span>
+            <div>
+              <strong>Open the dashboard</strong>
+              <p>Go to <code class="inline-code">http://localhost:3000/dashboard</code>. You are redirected to <code class="inline-code">/dashboard/setup</code>.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="tl-num" aria-hidden="true">2</span>
+            <div>
+              <strong>Create the system admin</strong>
+              <p>Username at least 3 characters, password at least 8 characters.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="tl-num" aria-hidden="true">3</span>
+            <div>
+              <strong>Build your first tour</strong>
+              <p>Log in at <code class="inline-code">/dashboard/login</code> on later visits, add rooms, and connect them with hotspots.</p>
+            </div>
+          </li>
+        </ol>
 
-        <div id="tab-macos" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-macos">
-          <div class="install-req"><i class="fa-brands fa-apple" aria-hidden="true"></i> <strong>macOS quick install:</strong> run this command in Terminal.</div>
-          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>curl -fsSL https://get.tourbine.efenow.xyz/install.sh | bash</code></pre>
-        </div>
-
-        <div id="tab-windows" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-windows">
-          <div class="install-req"><i class="fa-brands fa-windows" aria-hidden="true"></i> <strong>PowerShell quick install:</strong> run PowerShell as your user.</div>
-          <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>irm https://get.tourbine.efenow.xyz/install.ps1 | iex</code></pre>
-        </div>
-
-        <div id="tab-npm" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-npm">
-          <div class="install-req">
-            <strong>Requirement:</strong> Node.js LTS and npm. The SQLite driver is a native addon,
-            so installing from source needs build tools (python3, make, g++); the Docker image
-            installs them for you.
-          </div>
-
-          <ol class="install-steps">
-            <li>
-              <span class="step-label">Clone the repository</span>
-              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>git clone https://github.com/efenow/tourbine.git</code></pre>
-            </li>
-            <li>
-              <span class="step-label">Enter the project directory</span>
-              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>cd tourbine</code></pre>
-            </li>
-            <li>
-              <span class="step-label">Install dependencies</span>
-              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm install</code></pre>
-            </li>
-            <li>
-              <span class="step-label">Start the server</span>
-              <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm start</code></pre>
-            </li>
-          </ol>
-
-          <p class="install-note">
-            Open <strong>http://localhost:3000</strong>. On first run, <code class="inline-code">/dashboard</code>
-            redirects to <code class="inline-code">/dashboard/setup</code>. Create the system admin account there:
-            username at least 3 characters, password at least 8 characters.
-          </p>
-
-          <div class="install-group">
-            <p class="step-label">Development (auto-restart on file change)</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>npm run dev</code></pre>
-          </div>
-
-          <p class="install-note">
-            Environment variables: <code class="inline-code">PORT</code> (default 3000),
-            <code class="inline-code">DB_PATH</code> (default <code class="inline-code">data/tourbine.db</code>), and
-            <code class="inline-code">NODE_ENV=production</code> to turn on secure session cookies.
-          </p>
-        </div>
-
-        <div id="tab-docker" class="install-panel hidden" role="tabpanel" aria-labelledby="btn-docker">
-          <div class="install-req">
-            <strong>Requirement:</strong> Docker with Docker Compose
-          </div>
-
-          <div class="install-group">
-            <p class="step-label">Quickstart — build and start in the background</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose up -d --build</code></pre>
-          </div>
-
-          <div class="install-group">
-            <p class="step-label">View logs</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose logs -f</code></pre>
-          </div>
-
-          <div class="install-group">
-            <p class="step-label">Stop</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>docker compose down</code></pre>
-          </div>
-
-          <div class="install-group">
-            <p class="step-label">Update to a newer commit</p>
-            <pre class="codeblock"><button class="copy-btn" aria-label="Copy" onclick="copyCode(this)">Copy</button><code>git pull
+        <details class="manual">
+          <summary><i class="fa-solid fa-terminal" aria-hidden="true"></i> Prefer to install manually? <span class="summary-hint">npm, Docker, and environment variables</span><i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i></summary>
+          <div class="manual-body">
+            <div class="manual-grid">
+              <div>
+                <h4><i class="fa-brands fa-node-js" aria-hidden="true"></i> From source with npm</h4>
+                <p class="install-note">Needs Node.js LTS and npm. The SQLite driver is a native addon, so building needs python3, make, and g++.</p>
+                <ol class="install-steps">
+                  <li>
+                    <span class="step-label">Clone the repository</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>git clone https://github.com/efenow/tourbine.git</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">Enter the project directory</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>cd tourbine</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">Install dependencies and start</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy commands"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>npm install
+npm start</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">Development (auto-restart on file change)</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>npm run dev</code></pre>
+                  </li>
+                </ol>
+              </div>
+              <div>
+                <h4><i class="fa-brands fa-docker" aria-hidden="true"></i> With Docker Compose</h4>
+                <p class="install-note">Run from the cloned repository. Compose sets <code class="inline-code">NODE_ENV=production</code> and <code class="inline-code">PORT=3000</code>.</p>
+                <ol class="install-steps">
+                  <li>
+                    <span class="step-label">Build and start in the background</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>docker compose up -d --build</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">View logs</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>docker compose logs -f</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">Stop</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy command"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>docker compose down</code></pre>
+                  </li>
+                  <li>
+                    <span class="step-label">Update to a newer commit</span>
+                    <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy commands"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>git pull
 docker compose up -d --build</code></pre>
-          </div>
+                  </li>
+                </ol>
+                <p class="install-note">
+                  The database and uploads live in the named volumes
+                  <code class="inline-code">tourbine_data</code> (<code class="inline-code">/app/data</code>) and
+                  <code class="inline-code">tourbine_uploads</code> (<code class="inline-code">/app/public/uploads</code>),
+                  so they survive restarts and rebuilds.
+                </p>
+              </div>
+            </div>
 
-          <p class="install-note">
-            The database and uploads are persisted in the named volumes
-            <code class="inline-code">tourbine_data</code> (<code class="inline-code">/app/data</code>) and
-            <code class="inline-code">tourbine_uploads</code> (<code class="inline-code">/app/public/uploads</code>),
-            so they survive container restarts and rebuilds. Compose sets
-            <code class="inline-code">NODE_ENV=production</code> and <code class="inline-code">PORT=3000</code>.
-            For a public hostname, follow the Cloudflare Tunnel section in the repository README.
-          </p>
+            <h4><i class="fa-solid fa-sliders" aria-hidden="true"></i> Environment variables</h4>
+            <div class="table-wrap">
+              <table class="env">
+                <thead><tr><th scope="col">Variable</th><th scope="col">Default</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="inline-code">PORT</code></td><td><code>3000</code></td><td>HTTP port the server listens on</td></tr>
+                  <tr><td><code class="inline-code">NODE_ENV</code></td><td><code>development</code></td><td>Set to <code>production</code> to enable secure session cookies</td></tr>
+                  <tr><td><code class="inline-code">DB_PATH</code></td><td><code>data/tourbine.db</code></td><td>Path to the SQLite database file</td></tr>
+                  <tr><td><code class="inline-code">UPLOADS_DIR</code></td><td><code>public/uploads</code></td><td>Directory uploaded media is written to</td></tr>
+                  <tr><td><code class="inline-code">TRUST_PROXY</code></td><td><code>0</code></td><td>Set to <code>1</code> only when a trusted reverse proxy is the only path to the app</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section id="embed" class="container section">
+        <p class="eyebrow">Put tours where people already are</p>
+        <h2>Embed anywhere, or go headless</h2>
+        <div class="dev-grid">
+          <article class="dev-card reveal">
+            <h3><i class="fa-solid fa-window-maximize" aria-hidden="true"></i> Embed code</h3>
+            <p>Each tour has an iframe-friendly view without the back, share, or dashboard buttons. The dashboard fills in your host and tour slug.</p>
+            <pre class="codeblock"><button class="copy-btn" type="button" aria-label="Copy embed code"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button><code>&lt;iframe
+  src="https://your-server/tour/your-tour/embed"
+  width="100%" height="500"
+  style="border:none;border-radius:8px;"
+  allowfullscreen
+  loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+            <div class="embed-mock" aria-hidden="true">
+              <div class="mock-bar"><span></span><span></span><span></span><em>your-site.example</em></div>
+              <div class="mock-page">
+                <div class="mock-line"></div>
+                <div class="mock-line short"></div>
+                <div class="mock-view"></div>
+              </div>
+            </div>
+          </article>
+          <article class="dev-card reveal">
+            <h3><i class="fa-solid fa-plug" aria-hidden="true"></i> Read-only JSON API</h3>
+            <p>Build your own front end on top of the same tour data the viewer uses.</p>
+            <ul class="routes">
+              <li><span class="verb">GET</span><code>/api/tours</code><span>List tours with counts and cover image</span></li>
+              <li><span class="verb">GET</span><code>/api/tours/:slug</code><span>Tour, rooms, hotspots, scenes, and first scene</span></li>
+            </ul>
+            <p class="routes-title">Public pages</p>
+            <ul class="routes">
+              <li><span class="verb verb-page">PAGE</span><code>/</code><span>Tour list</span></li>
+              <li><span class="verb verb-page">PAGE</span><code>/tour/:tourSlug</code><span>Full tour page</span></li>
+              <li><span class="verb verb-page">PAGE</span><code>/tour/:tourSlug/embed</code><span>Embed view</span></li>
+            </ul>
+          </article>
         </div>
       </section>
 
-      <section id="opensource" class="container section section-highlight">
-        <p class="eyebrow">Your server. Your files.</p>
-        <h2><i class="fa-solid fa-lock-open" aria-hidden="true"></i> Open source without lock-in</h2>
-        <p>
-          Tourbine is GPL-3.0 software. Keep the database and uploaded media on your own hardware,
-          inspect the source, and adapt it to your workflow. There is no hosted tier or telemetry.
-        </p>
-        <ul>
-          <li>License: <strong>GPL-3.0</strong></li>
-          <li>Your SQLite database and uploads stay on your own disk</li>
-          <li>No accounts, no cloud services, no lock-in</li>
-          <li>Contribution rules in <code class="inline-code">CODE_OF_CONDUCT.md</code>; report vulnerabilities per <code class="inline-code">SECURITY.md</code></li>
-        </ul>
-        <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Get the source</a>
+      <section id="opensource" class="container section">
+        <div class="section-highlight reveal">
+          <div class="oss-copy">
+            <p class="eyebrow">Your server. Your files.</p>
+            <h2><i class="fa-solid fa-lock-open" aria-hidden="true"></i> Open source without lock-in</h2>
+            <p>
+              Tourbine is GPL-3.0 software. Keep the database and uploaded media on your own hardware,
+              inspect the source, and adapt it to your workflow. There is no hosted tier or telemetry.
+            </p>
+            <ul class="checks">
+              <li>Your SQLite database and uploads stay on your own disk</li>
+              <li>No accounts, no cloud services, no lock-in</li>
+              <li>Built with Express, EJS, SQLite, and Pannellum</li>
+            </ul>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Get the source</a>
+              <a class="btn btn-ghost" href="https://github.com/efenow/tourbine/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-map" aria-hidden="true"></i> Read the roadmap</a>
+            </div>
+          </div>
+          <ul class="oss-links">
+            <li><a href="https://github.com/efenow/tourbine/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span><strong>License</strong>GPL-3.0</span></a></li>
+            <li><a href="https://github.com/efenow/tourbine/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span><strong>Contributing</strong>CODE_OF_CONDUCT.md</span></a></li>
+            <li><a href="https://github.com/efenow/tourbine/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bug" aria-hidden="true"></i><span><strong>Report a vulnerability</strong>SECURITY.md</span></a></li>
+            <li><a href="https://github.com/efenow/get-tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-download" aria-hidden="true"></i><span><strong>Installer scripts</strong>efenow/get-tourbine</span></a></li>
+          </ul>
+        </div>
       </section>
 
       <section id="faq" class="container section">
         <p class="eyebrow">Virtual tour software FAQ</p>
         <h2>Why use Tourbine?</h2>
         <div class="faq-list">
-          <article class="faq-item">
-            <h3>Is Tourbine free virtual tour software?</h3>
+          <details class="faq-item" open>
+            <summary>Is Tourbine free virtual tour software?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
             <p>Yes. Tourbine is free and licensed under GPL-3.0. Run it on your own hardware without a hosted subscription.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Is Tourbine open source and self-hosted?</h3>
+          </details>
+          <details class="faq-item">
+            <summary>Is Tourbine open source and self-hosted?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
             <p>Yes. Tourbine is open source self-hosted software. You keep your database and uploaded media on your own server.</p>
-          </article>
-          <article class="faq-item">
-            <h3>What can Tourbine create?</h3>
+          </details>
+          <details class="faq-item">
+            <summary>What can Tourbine create?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
             <p>Create interactive 360° virtual tours with panoramic images, video, hotspots, information points, embeds, and shareable links.</p>
-          </article>
+          </details>
+          <details class="faq-item">
+            <summary>Should I choose Docker or npm?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+            <p>Docker is recommended for servers and production. It handles native dependencies and keeps the app isolated. npm is recommended for local development and needs Node.js, npm, and native build tools.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I make my tours public on the internet?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+            <p>Use Cloudflare Tunnel for public access without port-forwarding. The repository includes an example tunnel config, and the dashboard has a Cloudflared settings page that shows a generated config preview.</p>
+          </details>
+          <details class="faq-item">
+            <summary>I lost the admin password. What now?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+            <p>Run <code class="inline-code">node reset-password.js</code>. It opens the SQLite database directly, so it works even when the server is not running.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Where is my data stored?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+            <p>The SQLite database is at <code class="inline-code">data/tourbine.db</code> and uploads go to <code class="inline-code">public/uploads</code>. Change them with <code class="inline-code">DB_PATH</code> and <code class="inline-code">UPLOADS_DIR</code>.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="container section">
+        <div class="final-cta reveal">
+          <img src="./assets/logos/tourbine-mark.png" alt="" width="96" height="96" />
+          <h2>Your next tour starts with one command</h2>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
+            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Star on GitHub</a>
+          </div>
         </div>
       </section>
     </main>
@@ -269,30 +431,19 @@ docker compose up -d --build</code></pre>
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>© Tourbine • Self-hosted 360° virtual tour software</p>
-        <a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> efenow/tourbine</a>
+        <ul class="footer-links">
+          <li><a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> efenow/tourbine</a></li>
+          <li><a href="https://github.com/efenow/get-tourbine" target="_blank" rel="noopener noreferrer">Installer</a></li>
+          <li><a href="https://github.com/efenow/tourbine/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
+          <li><a href="https://github.com/efenow/tourbine/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security</a></li>
+        </ul>
       </div>
     </footer>
-    <script>
-       function switchTab(method) {
-        document.querySelectorAll('.install-tab').forEach(function(btn) {
-          var active = btn.id === 'btn-' + method;
-          btn.classList.toggle('active', active);
-          btn.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        document.querySelectorAll('.install-panel').forEach(function(panel) {
-          panel.classList.toggle('hidden', panel.id !== 'tab-' + method);
-        });
-      }
 
-      function copyCode(btn) {
-        var code = btn.nextElementSibling.textContent;
-        navigator.clipboard.writeText(code).then(function() {
-          var orig = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(function() { btn.textContent = orig; }, 1500);
-        });
-      }
-    </script>
+    <div class="sr-only" aria-live="polite" id="live"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js" defer></script>
+    <script src="./app.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -308,6 +459,21 @@ docker compose up -d --build</code></pre>
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": { "@type": "Organization", "name": "Tourbine", "url": "https://tourbine.efenow.xyz/" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is Tourbine free virtual tour software?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tourbine is free and licensed under GPL-3.0. Run it on your own hardware without a hosted subscription." } },
+          { "@type": "Question", "name": "Is Tourbine open source and self-hosted?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tourbine is open source self-hosted software. You keep your database and uploaded media on your own server." } },
+          { "@type": "Question", "name": "What can Tourbine create?", "acceptedAnswer": { "@type": "Answer", "text": "Create interactive 360° virtual tours with panoramic images, video, hotspots, information points, embeds, and shareable links." } },
+          { "@type": "Question", "name": "Should I choose Docker or npm?", "acceptedAnswer": { "@type": "Answer", "text": "Docker is recommended for servers and production. It handles native dependencies and keeps the app isolated. npm is recommended for local development and needs Node.js, npm, and native build tools." } },
+          { "@type": "Question", "name": "How do I make my tours public on the internet?", "acceptedAnswer": { "@type": "Answer", "text": "Use Cloudflare Tunnel for public access without port-forwarding. The repository includes an example tunnel config, and the dashboard has a Cloudflared settings page that shows a generated config preview." } },
+          { "@type": "Question", "name": "I lost the admin password. What now?", "acceptedAnswer": { "@type": "Answer", "text": "Run node reset-password.js. It opens the SQLite database directly, so it works even when the server is not running." } },
+          { "@type": "Question", "name": "Where is my data stored?", "acceptedAnswer": { "@type": "Answer", "text": "The SQLite database is at data/tourbine.db and uploads go to public/uploads. Change them with DB_PATH and UPLOADS_DIR." } }
+        ]
       }
     </script>
   </body>
