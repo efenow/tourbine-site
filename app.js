@@ -166,8 +166,10 @@
   /* ── Install tabs ─────────────────────────────────────────────── */
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.install-tab'));
+  var panelTimer = null;
+  var activePanel = document.querySelector('.install-panel:not(.hidden)');
 
-  function switchTab(os, focus) {
+  function switchTab(os, focus, animate) {
     tabs.forEach(function (btn) {
       var active = btn.dataset.os === os;
       btn.classList.toggle('active', active);
@@ -175,17 +177,43 @@
       btn.tabIndex = active ? 0 : -1;
       if (active && focus) btn.focus();
     });
+
+    var nextPanel = document.getElementById('tab-' + os);
+    if (!nextPanel || nextPanel === activePanel) return;
+    if (panelTimer) clearTimeout(panelTimer);
+
     document.querySelectorAll('.install-panel').forEach(function (panel) {
-      panel.classList.toggle('hidden', panel.id !== 'tab-' + os);
+      panel.classList.remove('panel-exit', 'panel-enter-forward', 'panel-enter-back');
+      if (panel !== activePanel && panel !== nextPanel) panel.classList.add('hidden');
     });
+
+    if (!animate || reduceMotion || !activePanel) {
+      document.querySelectorAll('.install-panel').forEach(function (panel) {
+        panel.classList.toggle('hidden', panel !== nextPanel);
+      });
+      activePanel = nextPanel;
+      return;
+    }
+
+    var forward = os === 'windows';
+    activePanel.classList.add('panel-exit');
+    nextPanel.classList.remove('hidden');
+    nextPanel.classList.add(forward ? 'panel-enter-forward' : 'panel-enter-back');
+    panelTimer = setTimeout(function () {
+      activePanel.classList.add('hidden');
+      activePanel.classList.remove('panel-exit');
+      nextPanel.classList.remove('panel-enter-forward', 'panel-enter-back');
+      activePanel = nextPanel;
+      panelTimer = null;
+    }, 220);
   }
 
   tabs.forEach(function (btn, i) {
-    btn.addEventListener('click', function () { switchTab(btn.dataset.os); });
+    btn.addEventListener('click', function () { switchTab(btn.dataset.os, false, true); });
     btn.addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
       var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
-      switchTab(next.dataset.os, true);
+      switchTab(next.dataset.os, true, true);
     });
   });
 
