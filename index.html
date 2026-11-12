@@ -10,7 +10,7 @@
     />
     <link rel="canonical" href="https://tourbine.efenow.xyz/" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#060714" />
+    <meta name="theme-color" content="#0f141c" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tourbine" />
     <meta property="og:title" content="Tourbine: Free, Open Source 360° Virtual Tour Software" />
@@ -30,56 +30,58 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <!-- Icons are decorative, so the icon stylesheet loads without blocking first paint. -->
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
-    <link rel="preload" as="image" href="./assets/pano/cafeteria-preview.jpg" />
     <link rel="stylesheet" href="./styles.css" />
     <script>document.documentElement.classList.add('js');</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
-    <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="container nav">
         <a class="brand" href="#top" aria-label="Tourbine home">
-          <img src="./assets/logos/tourbine-wordmark.png" alt="Tourbine" />
+          <img src="./assets/logos/tourbine-wordmark.png" alt="Tourbine" width="176" height="88" />
         </a>
-        <nav aria-label="Primary">
-          <a href="#features"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Features</a>
-          <a href="#install"><i class="fa-solid fa-download" aria-hidden="true"></i> Install</a>
-          <a href="#embed"><i class="fa-solid fa-code" aria-hidden="true"></i> Embed &amp; API</a>
-          <a href="#opensource"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Open Source</a>
-          <a href="#faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</a>
+        <nav id="primary-nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#install">Install</a>
+          <a href="#embed">Embed &amp; API</a>
+          <a href="#opensource">Open source</a>
+          <a href="#faq">FAQ</a>
         </nav>
         <a class="nav-gh" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer" aria-label="Tourbine on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span> GitHub</span></a>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       </div>
     </header>
 
     <main id="main">
       <section id="top" class="hero" aria-labelledby="hero-title">
-        <div id="pano" class="hero-viewer" aria-label="Interactive 360° panorama. Drag to look around."></div>
+        <img class="hero-poster" src="./assets/pano/cafeteria-preview.jpg" alt="" width="1024" height="512" fetchpriority="high" />
+        <div id="pano" class="hero-viewer" role="region" aria-label="Interactive 360° panorama. Drag to look around."></div>
         <div class="hero-shade" aria-hidden="true"></div>
 
         <div class="container hero-inner">
           <div class="hero-card">
-            <p class="eyebrow">Self-hosted 360° virtual tours</p>
             <h1 id="hero-title">Free, open source 360° virtual tour software</h1>
             <p class="lead">
               Tourbine is self-hosted virtual tour software for creating, managing, and sharing interactive
               tours from your own server. Add rooms, connect them with hotspots, and publish when ready.
             </p>
             <div class="hero-cta">
-              <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
+              <a class="btn btn-primary" href="#install">Install Tourbine</a>
               <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> View source on GitHub</a>
             </div>
 
             <div class="tour-stops" hidden>
-              <p class="stops-label"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Drag the view, or jump to a stop:</p>
+              <p class="stops-label">Drag the view, or jump to a stop:</p>
               <div class="stops" role="group" aria-label="Panorama stops"></div>
             </div>
           </div>
@@ -92,13 +94,6 @@
         <p class="hero-credit">This preview runs on <a href="https://pannellum.org/" target="_blank" rel="noopener noreferrer">Pannellum</a>, the 360° viewer Tourbine uses.</p>
       </section>
 
-      <section class="container stats" aria-label="Tourbine at a glance">
-        <div class="stat"><strong>GPL-3.0</strong><span>Open source license</span></div>
-        <div class="stat"><strong>6</strong><span>Media types per room</span></div>
-        <div class="stat"><strong>1</strong><span>Node.js process</span></div>
-        <div class="stat"><strong>0</strong><span>Hosted tiers or telemetry</span></div>
-      </section>
-
       <section id="features" class="container section">
         <p class="eyebrow">From upload to published tour</p>
         <h2>Everything needed to build a 360° virtual tour</h2>
@@ -108,7 +103,7 @@
           <article class="flow-card reveal">
             <div class="flow-head">
               <span class="flow-num">01</span>
-              <h3><i class="fa-solid fa-cube" aria-hidden="true"></i> Build</h3>
+              <h3>Build</h3>
             </div>
             <p>Rooms take any of six media types:</p>
             <ul class="chips" aria-label="Supported media types">
@@ -131,7 +126,7 @@
           <article class="flow-card reveal">
             <div class="flow-head">
               <span class="flow-num">02</span>
-              <h3><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Publish</h3>
+              <h3>Publish</h3>
             </div>
             <p>Share a link, embed the tour, or read it as JSON.</p>
             <ul class="checks">
@@ -146,7 +141,7 @@
           <article class="flow-card reveal">
             <div class="flow-head">
               <span class="flow-num">03</span>
-              <h3><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Run</h3>
+              <h3>Run</h3>
             </div>
             <p>Manage people, numbers, and backups.</p>
             <ul class="checks">
@@ -171,7 +166,6 @@
       </section>
 
       <section id="install" class="container section">
-        <p class="eyebrow">Ready to run on your machine</p>
         <h2>Install in one command</h2>
         <p class="section-lead">
           Tourbine runs as one Node.js process on port <strong>3000</strong>. The installer handles the setup
@@ -242,7 +236,7 @@
         </ol>
 
         <details class="manual">
-          <summary><i class="fa-solid fa-terminal" aria-hidden="true"></i> Prefer to install manually? <span class="summary-hint">npm, Docker, and environment variables</span><i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i></summary>
+          <summary>Prefer to install manually? <span class="summary-hint">npm, Docker, and environment variables</span><i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i></summary>
           <div class="manual-body">
             <div class="manual-grid">
               <div>
@@ -299,8 +293,8 @@ docker compose up -d --build</code></pre>
               </div>
             </div>
 
-            <h4><i class="fa-solid fa-sliders" aria-hidden="true"></i> Environment variables</h4>
-            <div class="table-wrap">
+            <h4>Environment variables</h4>
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Environment variables table">
               <table class="env">
                 <thead><tr><th scope="col">Variable</th><th scope="col">Default</th><th scope="col">Description</th></tr></thead>
                 <tbody>
@@ -329,14 +323,6 @@ docker compose up -d --build</code></pre>
   style="border:none;border-radius:8px;"
   allowfullscreen
   loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
-            <div class="embed-mock" aria-hidden="true">
-              <div class="mock-bar"><span></span><span></span><span></span><em>your-site.example</em></div>
-              <div class="mock-page">
-                <div class="mock-line"></div>
-                <div class="mock-line short"></div>
-                <div class="mock-view"></div>
-              </div>
-            </div>
           </article>
           <article class="dev-card reveal">
             <h3><i class="fa-solid fa-plug" aria-hidden="true"></i> Read-only JSON API</h3>
@@ -359,7 +345,7 @@ docker compose up -d --build</code></pre>
         <div class="section-highlight reveal">
           <div class="oss-copy">
             <p class="eyebrow">Your server. Your files.</p>
-            <h2><i class="fa-solid fa-lock-open" aria-hidden="true"></i> Open source without lock-in</h2>
+            <h2>Open source without lock-in</h2>
             <p>
               Tourbine is GPL-3.0 software. Keep the database and uploaded media on your own hardware,
               inspect the source, and adapt it to your workflow. There is no hosted tier or telemetry.
@@ -376,7 +362,7 @@ docker compose up -d --build</code></pre>
           </div>
           <ul class="oss-links">
             <li><a href="https://github.com/efenow/tourbine/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span><strong>License</strong>GPL-3.0</span></a></li>
-            <li><a href="https://github.com/efenow/tourbine/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span><strong>Contributing</strong>CODE_OF_CONDUCT.md</span></a></li>
+            <li><a href="https://github.com/efenow/tourbine/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span><strong>Code of conduct</strong>CODE_OF_CONDUCT.md</span></a></li>
             <li><a href="https://github.com/efenow/tourbine/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bug" aria-hidden="true"></i><span><strong>Report a vulnerability</strong>SECURITY.md</span></a></li>
             <li><a href="https://github.com/efenow/get-tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-download" aria-hidden="true"></i><span><strong>Installer scripts</strong>efenow/get-tourbine</span></a></li>
           </ul>
@@ -384,16 +370,11 @@ docker compose up -d --build</code></pre>
       </section>
 
       <section id="faq" class="container section">
-        <p class="eyebrow">Virtual tour software FAQ</p>
-        <h2>Why use Tourbine?</h2>
+        <h2>Questions before you install</h2>
         <div class="faq-list">
           <details class="faq-item" open>
-            <summary>Is Tourbine free virtual tour software?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
-            <p>Yes. Tourbine is free and licensed under GPL-3.0. Run it on your own hardware without a hosted subscription.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Is Tourbine open source and self-hosted?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
-            <p>Yes. Tourbine is open source self-hosted software. You keep your database and uploaded media on your own server.</p>
+            <summary>Is Tourbine free and self-hosted?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
+            <p>Yes. Tourbine is free, open source software under GPL-3.0. It runs on your own hardware, with no hosted subscription, and your database and uploaded media stay on your server.</p>
           </details>
           <details class="faq-item">
             <summary>What can Tourbine create?<i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
@@ -418,16 +399,6 @@ docker compose up -d --build</code></pre>
         </div>
       </section>
 
-      <section class="container section">
-        <div class="final-cta reveal">
-          <img src="./assets/logos/tourbine-mark.png" alt="" width="96" height="96" />
-          <h2>Your next tour starts with one command</h2>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#install"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Install Tourbine</a>
-            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Star on GitHub</a>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
@@ -468,8 +439,7 @@ docker compose up -d --build</code></pre>
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "Is Tourbine free virtual tour software?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tourbine is free and licensed under GPL-3.0. Run it on your own hardware without a hosted subscription." } },
-          { "@type": "Question", "name": "Is Tourbine open source and self-hosted?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tourbine is open source self-hosted software. You keep your database and uploaded media on your own server." } },
+          { "@type": "Question", "name": "Is Tourbine free and self-hosted?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tourbine is free, open source software under GPL-3.0. It runs on your own hardware, with no hosted subscription, and your database and uploaded media stay on your server." } },
           { "@type": "Question", "name": "What can Tourbine create?", "acceptedAnswer": { "@type": "Answer", "text": "Create interactive 360° virtual tours with panoramic images, video, hotspots, information points, embeds, and shareable links." } },
           { "@type": "Question", "name": "Should I choose Docker or npm?", "acceptedAnswer": { "@type": "Answer", "text": "Docker is recommended for servers and production. It handles native dependencies and keeps the app isolated. npm is recommended for local development and needs Node.js, npm, and native build tools." } },
           { "@type": "Question", "name": "How do I make my tours public on the internet?", "acceptedAnswer": { "@type": "Answer", "text": "Use Cloudflare Tunnel for public access without port-forwarding. The repository includes an example tunnel config, and the dashboard has a Cloudflared settings page that shows a generated config preview." } },
