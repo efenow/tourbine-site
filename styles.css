@@ -1237,6 +1237,83 @@ h1 {
   margin: 1.2rem 0 0.5rem;
 }
 
+/* Compare */
+
+.compare-scroll {
+  overflow-x: auto;
+}
+
+.compare {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.92rem;
+  min-width: 760px;
+  width: 100%;
+}
+
+.compare th,
+.compare td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare thead th {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.compare tbody th {
+  color: var(--text);
+  font-weight: 600;
+  width: 17%;
+}
+
+.compare td {
+  color: var(--muted);
+}
+
+/* Tourbine's column sits on a lighter surface so it reads as the page's subject. */
+.compare .col-us {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.compare thead .col-us {
+  border-radius: 12px 12px 0 0;
+  border-top: 3px solid var(--accent);
+}
+
+.compare tbody tr:last-child .col-us {
+  border-radius: 0 0 12px 12px;
+}
+
+.compare-sources {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 1.2rem;
+}
+
+.compare-sources p {
+  margin: 0 0 0.3rem;
+}
+
+.compare-sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.compare-sources a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
 /* Open source */
 
 .section-highlight {
@@ -1529,6 +1606,64 @@ h1 {
 
   .hs-tip {
     width: 200px;
+  }
+
+  /* Phones: one card per criterion, each vendor on its own labeled line. */
+  .compare-scroll {
+    overflow: visible;
+  }
+
+  .compare,
+  .compare tbody,
+  .compare tr,
+  .compare th,
+  .compare td {
+    display: block;
+    min-width: 0;
+    width: auto;
+  }
+
+  .compare thead {
+    display: none;
+  }
+
+  .compare tbody {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .compare tbody tr {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .compare tbody th {
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    width: auto;
+  }
+
+  .compare td {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+  }
+
+  .compare tbody tr td:last-child {
+    border-bottom: 0;
+  }
+
+  .compare td::before {
+    color: var(--text);
+    content: attr(data-label);
+    font-weight: 600;
+  }
+
+  .compare .col-us,
+  .compare tbody tr:last-child .col-us {
+    border-radius: 0;
   }
 
   .methods,
