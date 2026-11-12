@@ -1194,7 +1194,7 @@ h1 {
 
 .mock-full {
   background: #1a1712 url('./assets/pano/embed-share.jpg') center / cover no-repeat;
-  flex: 1 0 180px;
+  flex: 1 0 300px;
   position: relative;
 }
 
@@ -1206,7 +1206,7 @@ h1 {
   height: 18px;
   left: 58%;
   position: absolute;
-  top: 48%;
+  top: 38%;
   width: 18px;
 }
 
@@ -1279,7 +1279,8 @@ h1 {
   /* Normal camera views rendered from the panorama, at 2x display size. */
   background: #1a1712 url('./assets/pano/embed-site.jpg') center / cover no-repeat;
   border-radius: 8px;
-  height: 150px;
+  height: 270px;
+  overflow: hidden;
   position: relative;
 }
 
@@ -1291,9 +1292,127 @@ h1 {
   height: 18px;
   left: 62%;
   position: absolute;
-  top: 45%;
+  top: 30%;
   width: 18px;
 }
+
+/* Skeleton of the real Tourbine tour page (views/tour.ejs): top bar, toolbar and room strip. */
+.tour-ui {
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: space-between;
+  position: absolute;
+}
+
+.tour-ui b,
+.tu-back {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+  height: 14px;
+  width: 14px;
+}
+
+.tu-bar {
+  background: rgba(255, 255, 255, 0.32);
+  border-radius: 3px;
+  display: block;
+  height: 5px;
+  width: 70%;
+}
+
+.tu-top {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+}
+
+.tu-back {
+  background: rgba(25, 25, 25, 0.82);
+  height: 24px;
+  width: 24px;
+}
+
+.tu-pill {
+  background: rgba(25, 25, 25, 0.82);
+  border-radius: 14px;
+  display: grid;
+  gap: 4px;
+  padding: 6px 12px;
+  width: 104px;
+}
+
+.tu-pill .tu-bar {
+  width: 100%;
+}
+
+.tu-pill .tu-bar-xs {
+  background: rgba(255, 255, 255, 0.18);
+  width: 70%;
+}
+
+.tu-toolbar {
+  align-items: center;
+  background: rgba(18, 18, 18, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 6px 10px;
+}
+
+.tu-group {
+  display: flex;
+  gap: 4px;
+}
+
+.tu-room {
+  background: rgba(255, 255, 255, 0.22);
+  width: 64px;
+}
+
+.tu-strip {
+  background: rgba(12, 12, 12, 0.93);
+  display: flex;
+  gap: 6px;
+  overflow: hidden;
+  padding: 7px 10px 9px;
+}
+
+.tu-card {
+  background: #1c1c1c;
+  border: 1.5px solid transparent;
+  border-radius: 5px;
+  display: grid;
+  flex: 0 0 64px;
+  gap: 5px;
+  overflow: hidden;
+  padding-bottom: 5px;
+}
+
+.tu-card.is-active {
+  border-color: #fff;
+}
+
+.tu-card .tu-bar {
+  height: 4px;
+  margin-left: 5px;
+  width: 60%;
+}
+
+/* Thumbnails are slices of the same panorama, standing in for different rooms. */
+.tu-thumb {
+  background: #252525 url('./assets/pano/cafeteria-preview.jpg') 0 50% / 420% auto no-repeat;
+  display: block;
+  height: 36px;
+}
+
+.tu-t2 { background-position: 33% 50%; }
+.tu-t3 { background-position: 66% 50%; }
+.tu-t4 { background-position: 100% 50%; }
 
 /* Tinted bands on alternating sections; the shadow trick paints the full width without extra wrappers. */
 .band {

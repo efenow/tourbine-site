@@ -39,7 +39,7 @@ Dial: ENERGY 2 / RHYTHM 2 / MOTION 2
 - Steps are numbered only where order is real (Build, Publish, Run; first-run setup).
 - Comparison: vendor logos in the header, a verdict icon, short answer and detail per cell; on phones one criterion per swipeable card.
 - Owner override (antislop audit #16): the closing section with the Tourbine mark and the Install / GitHub buttons stays, by request.
-- Owner override (antislop audit #14): the mock browser window under the embed code stays, by request.
+- Owner override (antislop audit #14): the mock browser windows stay, by request. Each shows a simplified skeleton of the real tour page from `efenow/tourbine` `views/tour.ejs`: the embed view (toolbar and room strip, no back or share buttons) and the full page (adds the back button and the "Powered by Tourbine" pill).
 
 ## Motion
 
