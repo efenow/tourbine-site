@@ -344,82 +344,50 @@ docker compose up -d --build</code></pre>
 
       <section id="compare" class="container section" aria-labelledby="compare-title">
         <h2 id="compare-title">How Tourbine compares</h2>
-        <p class="section-lead">
-          Kuula, CloudPano and Matterport are hosted services you subscribe to. Tourbine is software you run yourself.
-          Every competitor entry below comes from that vendor's own pages, checked on 12 November 2026.
-        </p>
+        <p class="section-lead">Kuula, CloudPano and Matterport are hosted subscriptions. Tourbine runs on your server. Competitor details are from their own sites, November 2026.</p>
 
-        <div class="compare-scroll">
-          <table class="compare" role="table">
-            <caption class="sr-only">Tourbine compared with Kuula, CloudPano and Matterport</caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th scope="col" role="columnheader"><span class="sr-only">Criterion</span></th>
-                <th scope="col" role="columnheader" class="col-us">Tourbine</th>
-                <th scope="col" role="columnheader">Kuula</th>
-                <th scope="col" role="columnheader">CloudPano</th>
-                <th scope="col" role="columnheader">Matterport</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-              <tr role="row">
-                <th scope="row" role="rowheader">How you pay</th>
-                <td role="cell" class="col-us" data-label="Tourbine">Free. GPL-3.0, no paid tier.</td>
-                <td role="cell" data-label="Kuula">Free Basic plan. Pro and Business are billed monthly or yearly.</td>
-                <td role="cell" data-label="CloudPano">Free to start. Pro, Pro Plus and Commercial are billed annually.</td>
-                <td role="cell" data-label="Matterport">Professional plan, billed monthly or yearly by number of active spaces. Enterprise through sales.</td>
-              </tr>
-              <tr role="row">
-                <th scope="row" role="rowheader">Where tours live</th>
-                <td role="cell" class="col-us" data-label="Tourbine">Your server. The SQLite database and uploads stay on your disk.</td>
-                <td role="cell" data-label="Kuula">Kuula's hosting. Business adds a custom domain.</td>
-                <td role="cell" data-label="CloudPano">CloudPano's hosting. Pro Plus adds your own domain.</td>
-                <td role="cell" data-label="Matterport">Matterport's platform, counted as active spaces.</td>
-              </tr>
-              <tr role="row">
-                <th scope="row" role="rowheader">Limits</th>
-                <td role="cell" class="col-us" data-label="Tourbine">No caps on tours or rooms. 100&nbsp;MB per uploaded file.</td>
-                <td role="cell" data-label="Kuula">Basic: 300 posts, 100 uploads a month. Pro: 100,000 posts. Business: no limit.</td>
-                <td role="cell" data-label="CloudPano">Pro: 3 published projects. Pro Plus: unlimited.</td>
-                <td role="cell" data-label="Matterport">Professional: 10 to 500 active spaces, 10 users.</td>
-              </tr>
-              <tr role="row">
-                <th scope="row" role="rowheader">What a scene can be</th>
-                <td role="cell" class="col-us" data-label="Tourbine">360° image, still image, local video, YouTube, Vimeo, iframe embed.</td>
-                <td role="cell" data-label="Kuula">360° panoramas. Other types are not listed on the pricing page.</td>
-                <td role="cell" data-label="CloudPano">360° photos, spins, 360° video, 2D images, 2D video.</td>
-                <td role="cell" data-label="Matterport">3D digital twins from Pro2, Pro3 or supported 360° cameras.</td>
-              </tr>
-              <tr role="row">
-                <th scope="row" role="rowheader">Your branding</th>
-                <td role="cell" class="col-us" data-label="Tourbine">The embed view shows no Tourbine label.</td>
-                <td role="cell" data-label="Kuula">Pro swaps the Kuula logo for yours. Business allows several logos.</td>
-                <td role="cell" data-label="CloudPano">Pro removes the CloudPano watermark. Pro Plus is white label.</td>
-                <td role="cell" data-label="Matterport">Not stated on the plans page.</td>
-              </tr>
-              <tr role="row">
-                <th scope="row" role="rowheader">Developer access</th>
-                <td role="cell" class="col-us" data-label="Tourbine">Read-only JSON API, plus the full source code.</td>
-                <td role="cell" data-label="Kuula">JavaScript player API for embedded tours.</td>
-                <td role="cell" data-label="CloudPano">SDK and API, both publicly available.</td>
-                <td role="cell" data-label="Matterport">APIs and SDK with keys from a free account. Full access on Enterprise.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="compare-sources">
-          <p>Plans and prices change. Check the vendor's page before you decide:</p>
-          <ul>
-            <li><a href="https://kuula.co/page/pricing" target="_blank" rel="noopener noreferrer">Kuula pricing</a></li>
-            <li><a href="https://kuula.co/help/getting-started-api" target="_blank" rel="noopener noreferrer">Kuula Player API</a></li>
-            <li><a href="https://www.cloudpano.com/" target="_blank" rel="noopener noreferrer">CloudPano plans (home page)</a></li>
-            <li><a href="https://www.cloudpano.com/360-virtual-tour-sdk-api" target="_blank" rel="noopener noreferrer">CloudPano SDK and API</a></li>
-            <li><a href="https://matterport.com/plans" target="_blank" rel="noopener noreferrer">Matterport plans</a></li>
-            <li><a href="https://matterport.com/developers" target="_blank" rel="noopener noreferrer">Matterport developers</a></li>
-            <li><a href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer">Tourbine source</a></li>
-          </ul>
-        </div>
+        <table class="compare" role="table">
+          <caption class="sr-only">Tourbine compared with Kuula, CloudPano and Matterport</caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader"><span class="sr-only">Criterion</span></th>
+              <th scope="col" role="columnheader" class="col-us">Tourbine</th>
+              <th scope="col" role="columnheader">Kuula</th>
+              <th scope="col" role="columnheader">CloudPano</th>
+              <th scope="col" role="columnheader">Matterport</th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Price</th>
+              <td role="cell" class="col-us" data-label="Tourbine">Free</td>
+              <td role="cell" data-label="Kuula">Free plan, paid tiers</td>
+              <td role="cell" data-label="CloudPano">Free to start, paid tiers</td>
+              <td role="cell" data-label="Matterport">Paid, by number of spaces</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Hosted on</th>
+              <td role="cell" class="col-us" data-label="Tourbine">Your server</td>
+              <td role="cell" data-label="Kuula">Kuula</td>
+              <td role="cell" data-label="CloudPano">CloudPano</td>
+              <td role="cell" data-label="Matterport">Matterport</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Limits</th>
+              <td role="cell" class="col-us" data-label="Tourbine">None</td>
+              <td role="cell" data-label="Kuula">300 posts on free</td>
+              <td role="cell" data-label="CloudPano">3 projects on Pro</td>
+              <td role="cell" data-label="Matterport">10 to 500 spaces</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Your own branding</th>
+              <td role="cell" class="col-us" data-label="Tourbine">Yes</td>
+              <td role="cell" data-label="Kuula">Pro plan</td>
+              <td role="cell" data-label="CloudPano">Pro Plus plan</td>
+              <td role="cell" data-label="Matterport">Not stated</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section id="opensource" class="container section">

@@ -1239,35 +1239,23 @@ h1 {
 
 /* Compare */
 
-.compare-scroll {
-  overflow-x: auto;
-}
-
 .compare {
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 0.92rem;
-  min-width: 760px;
   width: 100%;
 }
 
 .compare th,
 .compare td {
   border-bottom: 1px solid var(--border);
-  padding: 0.85rem 0.9rem;
+  padding: 0.8rem 0.9rem;
   text-align: left;
-  vertical-align: top;
 }
 
-.compare thead th {
-  color: var(--text);
-  font-size: 1rem;
-}
-
+.compare thead th,
 .compare tbody th {
   color: var(--text);
   font-weight: 600;
-  width: 17%;
 }
 
 .compare td {
@@ -1278,6 +1266,7 @@ h1 {
 .compare .col-us {
   background: var(--surface-2);
   color: var(--text);
+  font-weight: 600;
 }
 
 .compare thead .col-us {
@@ -1287,31 +1276,6 @@ h1 {
 
 .compare tbody tr:last-child .col-us {
   border-radius: 0 0 12px 12px;
-}
-
-.compare-sources {
-  color: var(--muted);
-  font-size: 0.88rem;
-  margin-top: 1.2rem;
-}
-
-.compare-sources p {
-  margin: 0 0 0.3rem;
-}
-
-.compare-sources ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1.2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.compare-sources a {
-  align-items: center;
-  display: inline-flex;
-  min-height: 44px;
 }
 
 /* Open source */
@@ -1608,19 +1572,13 @@ h1 {
     width: 200px;
   }
 
-  /* Phones: one card per criterion, each vendor on its own labeled line. */
-  .compare-scroll {
-    overflow: visible;
-  }
-
+  /* Phones: one compact card per criterion. */
   .compare,
   .compare tbody,
   .compare tr,
   .compare th,
   .compare td {
     display: block;
-    min-width: 0;
-    width: auto;
   }
 
   .compare thead {
@@ -1629,7 +1587,7 @@ h1 {
 
   .compare tbody {
     display: grid;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
   .compare tbody tr {
@@ -1639,26 +1597,30 @@ h1 {
     overflow: hidden;
   }
 
+  .compare th,
+  .compare td {
+    padding: 0.5rem 0.9rem;
+  }
+
   .compare tbody th {
-    border-bottom: 1px solid var(--border);
-    font-size: 1rem;
-    width: auto;
+    padding-top: 0.75rem;
   }
 
   .compare td {
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: 6.5rem minmax(0, 1fr);
-  }
-
-  .compare tbody tr td:last-child {
     border-bottom: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
   }
 
   .compare td::before {
-    color: var(--text);
+    color: var(--muted);
     content: attr(data-label);
-    font-weight: 600;
+    font-weight: 400;
+  }
+
+  .compare td:not(.col-us) {
+    color: var(--text);
   }
 
   .compare .col-us,
