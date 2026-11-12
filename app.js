@@ -16,7 +16,7 @@
     history.replaceState(null, '', hash);
   }
 
-  /* ── Hero panorama ────────────────────────────────────────────── */
+  // Hero panorama
 
   // Pitch/yaw picked from assets/pano/cafeteria.jpg.
   var STOPS = [
@@ -38,12 +38,17 @@
   var rotating = !reduceMotion;
 
   function openStop(i) {
-    hotspotEls.forEach(function (el, j) { el.classList.toggle('open', j === i); });
+    hotspotEls.forEach(function (el, j) {
+      el.classList.toggle('open', j === i);
+      el.querySelector('.hs-dot').setAttribute('aria-expanded', j === i ? 'true' : 'false');
+    });
     chips.forEach(function (c, j) { c.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
   }
 
   function setRotating(on) {
     rotating = on;
+    // Hotspot rings pulse only while the view rotates, so the pause button stops all motion.
+    document.querySelector('.hero').classList.toggle('is-rotating', on);
     var btn = document.getElementById('pano-rotate');
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     btn.setAttribute('aria-label', on ? 'Pause rotation' : 'Resume rotation');
@@ -55,34 +60,32 @@
 
   function buildHotspot(div, i) {
     var s = STOPS[i];
+    var tipId = 'hs-tip-' + i;
     div.classList.add('hs');
-    div.setAttribute('tabindex', '0');
-    div.setAttribute('role', 'button');
-    div.setAttribute('aria-label', s.title + ': ' + s.text);
     div.innerHTML =
-      '<span class="hs-dot"><i class="fa-solid ' + s.icon + '" aria-hidden="true"></i></span>' +
-      '<span class="hs-label">' + s.label + '</span>' +
-      '<span class="hs-tip"><strong>' + s.title + '</strong><span>' + s.text + '</span>' +
-      (s.href ? '<a href="' + s.href + '" class="hs-go">' + s.action + ' <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>' : '') +
+      '<button type="button" class="hs-dot" aria-expanded="false" aria-controls="' + tipId + '" aria-label="' + s.label + '">' +
+      '<i class="fa-solid ' + s.icon + '" aria-hidden="true"></i></button>' +
+      '<span class="hs-label" aria-hidden="true">' + s.label + '</span>' +
+      '<span class="hs-tip" id="' + tipId + '"><strong>' + s.title + '</strong><span>' + s.text + '</span>' +
+      (s.href ? '<a href="' + s.href + '" class="hs-go">' + s.action + '</a>' : '') +
       '</span>';
     hotspotEls[i] = div;
 
-    function activate(e) {
-      var link = e.target.closest && e.target.closest('.hs-go');
-      if (link) {
-        e.preventDefault();
-        goTo(link.getAttribute('href'));
-        return;
-      }
+    div.querySelector('.hs-dot').addEventListener('click', function () {
       setRotating(false);
       openStop(div.classList.contains('open') ? -1 : i);
-    }
-    div.addEventListener('click', activate);
-    div.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
+    });
+    var link = div.querySelector('.hs-go');
+    if (link) {
+      link.addEventListener('click', function (e) {
         e.preventDefault();
-        if (s.href && div.classList.contains('open')) goTo(s.href);
-        else activate(e);
+        goTo(s.href);
+      });
+    }
+    div.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && div.classList.contains('open')) {
+        openStop(-1);
+        div.querySelector('.hs-dot').focus();
       }
     });
   }
@@ -151,7 +154,7 @@
 
     document.getElementById('pano-rotate').addEventListener('click', function () { setRotating(!rotating); });
     document.getElementById('pano-full').addEventListener('click', function () { viewer.toggleFullscreen(); });
-    if (reduceMotion) setRotating(false);
+    setRotating(rotating);
 
     // Stop rendering work when the hero is off screen.
     if ('IntersectionObserver' in window) {
@@ -163,7 +166,7 @@
     }
   }
 
-  /* ── Install tabs ─────────────────────────────────────────────── */
+  // Install tabs
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.install-tab'));
   var panelTimer = null;
@@ -228,7 +231,7 @@
     badge.hidden = false;
   }
 
-  /* ── Copy buttons ─────────────────────────────────────────────── */
+  // Copy buttons
 
   function fallbackCopy(text) {
     var ta = document.createElement('textarea');
@@ -261,7 +264,7 @@
     });
   });
 
-  /* ── Nav: active section + scroll state ───────────────────────── */
+  // Nav: active section, scroll state, mobile menu
 
   var header = document.querySelector('.site-header');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav a[href^="#"]'));
@@ -282,7 +285,23 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── Reveal on scroll ─────────────────────────────────────────── */
+  var navToggle = document.querySelector('.nav-toggle');
+  function setMenu(open) {
+    header.classList.toggle('menu-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  navToggle.addEventListener('click', function () {
+    setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  navLinks.forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('menu-open')) {
+      setMenu(false);
+      navToggle.focus();
+    }
+  });
+
+  // Reveal on scroll
 
   var reveals = document.querySelectorAll('.reveal');
   if (!reduceMotion && 'IntersectionObserver' in window) {
