@@ -1193,8 +1193,7 @@ h1 {
 }
 
 .mock-full {
-  /* Crop the middle band of the 360° image, where it is least distorted. */
-  background: #1a1712 url('./assets/pano/cafeteria-preview.jpg') 55% 55% / auto 190% no-repeat;
+  background: #1a1712 url('./assets/pano/embed-share.jpg') center / cover no-repeat;
   flex: 1 0 180px;
   position: relative;
 }
@@ -1277,7 +1276,8 @@ h1 {
 }
 
 .mock-view {
-  background: url('./assets/pano/cafeteria-preview.jpg') 30% 50% / 260% auto no-repeat;
+  /* Normal camera views rendered from the panorama, at 2x display size. */
+  background: #1a1712 url('./assets/pano/embed-site.jpg') center / cover no-repeat;
   border-radius: 8px;
   height: 150px;
   position: relative;
