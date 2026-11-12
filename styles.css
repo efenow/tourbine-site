@@ -1169,18 +1169,46 @@ h1 {
 /* Embed & API */
 
 .dev-grid {
-  align-items: start;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.6rem;
 }
 
+/* Cards share one height in the grid row. */
 .dev-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
   padding: 1.5rem;
+}
+
+/* The share preview grows to fill the space, so both cards end level. */
+.share-mock {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.mock-full {
+  /* Crop the middle band of the 360° image, where it is least distorted. */
+  background: #1a1712 url('./assets/pano/cafeteria-preview.jpg') 55% 55% / auto 190% no-repeat;
+  flex: 1 0 180px;
+  position: relative;
+}
+
+.mock-full::after {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3);
+  content: '';
+  height: 18px;
+  left: 58%;
+  position: absolute;
+  top: 48%;
+  width: 18px;
 }
 
 .dev-card:nth-child(2) {
