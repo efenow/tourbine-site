@@ -1197,6 +1197,76 @@ h1 {
   margin: 0 0 1rem;
 }
 
+/* Embed preview: a mock website page showing where an embedded tour sits. Kept by owner request. */
+.embed-mock {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.mock-bar {
+  align-items: center;
+  background: var(--surface-2);
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.mock-bar span {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+.mock-bar em {
+  background: var(--bg);
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-style: normal;
+  margin-left: 0.6rem;
+  padding: 0.1rem 0.6rem;
+}
+
+.mock-page {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.8rem;
+}
+
+.mock-line {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 0.5rem;
+  width: 60%;
+}
+
+.mock-line.short {
+  width: 35%;
+}
+
+.mock-view {
+  background: url('./assets/pano/cafeteria-preview.jpg') 30% 50% / 260% auto no-repeat;
+  border-radius: 8px;
+  height: 150px;
+  position: relative;
+}
+
+.mock-view::after {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3);
+  content: '';
+  height: 18px;
+  left: 62%;
+  position: absolute;
+  top: 45%;
+  width: 18px;
+}
+
 /* Tinted bands on alternating sections; the shadow trick paints the full width without extra wrappers. */
 .band {
   background: var(--band);

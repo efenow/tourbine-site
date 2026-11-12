@@ -39,6 +39,7 @@ Dial: ENERGY 2 / RHYTHM 2 / MOTION 2
 - Steps are numbered only where order is real (Build, Publish, Run; first-run setup).
 - Comparison: vendor logos in the header, a verdict icon, short answer and detail per cell; on phones one criterion per swipeable card.
 - Owner override (antislop audit #16): the closing section with the Tourbine mark and the Install / GitHub buttons stays, by request.
+- Owner override (antislop audit #14): the mock browser window under the embed code stays, by request.
 
 ## Motion
 
