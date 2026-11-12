@@ -5,11 +5,15 @@
   --surface-2: #1f2935;
   --text: #eef2f7;
   --muted: #aab6c6;
-  --accent: #2a66d9;
+  --accent: #2563eb;
   --accent-hover: #004aad;
   --accent-ink: #9dbdff;
+  --cyan: #45d6ff;
   --logo-blue: #004aad;
+  --band: #111b2c;
+  --glass: rgba(13, 27, 52, 0.8);
   --ok: #9be8c4;
+  --warn: #f5c26b;
   --border: rgba(255, 255, 255, 0.12);
   --mono: 'SF Mono', ui-monospace, Consolas, 'Liberation Mono', Menlo, monospace;
   --header-h: 4.8rem;
@@ -173,7 +177,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #fff;
+  color: var(--cyan);
   text-decoration: underline;
 }
 
@@ -270,8 +274,8 @@ nav a[aria-current] {
 .hero-card {
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  background: rgba(15, 20, 28, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--glass);
+  border: 1px solid rgba(69, 214, 255, 0.18);
   border-radius: 20px;
   /* Shadows only on things floating over the photo: this card and the hotspots. */
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
@@ -346,13 +350,13 @@ h1 {
 }
 
 .stop i {
-  color: var(--accent-ink);
+  color: var(--cyan);
   margin-right: 0.25rem;
 }
 
 .stop:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--cyan);
   text-decoration: underline;
 }
 
@@ -399,7 +403,7 @@ h1 {
 
 .icon-btn:hover {
   background: var(--bg);
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: var(--cyan);
   transform: scale(1.06);
 }
 
@@ -586,8 +590,8 @@ h1 {
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(69, 214, 255, 0.08);
+  border-color: var(--cyan);
   text-decoration: underline;
 }
 
@@ -655,7 +659,7 @@ h1 {
 }
 
 .flow-num {
-  color: var(--accent-ink);
+  color: var(--cyan);
   font-family: var(--mono);
   font-size: 0.9rem;
   font-weight: 700;
@@ -669,7 +673,7 @@ h1 {
 .secure h3 i,
 .dev-card h3 i,
 .manual h4 i {
-  color: var(--muted);
+  color: var(--cyan);
   font-size: 0.9em;
   margin-right: 0.35rem;
 }
@@ -689,8 +693,8 @@ h1 {
 }
 
 .chips li {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+  background: rgba(69, 214, 255, 0.1);
+  border: 1px solid rgba(69, 214, 255, 0.3);
   border-radius: 999px;
   color: var(--text);
   font-size: 0.8rem;
@@ -700,6 +704,7 @@ h1 {
 
 .chips i {
   margin-right: 0.2rem;
+  color: var(--cyan);
 }
 
 .checks {
@@ -718,7 +723,7 @@ h1 {
 
 /* Checkmark drawn in CSS so the bullets do not wait for the icon font. */
 .checks li::before {
-  border: solid var(--accent-ink);
+  border: solid var(--cyan);
   border-width: 0 2px 2px 0;
   content: '';
   height: 0.7rem;
@@ -914,8 +919,8 @@ h1 {
 }
 
 .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(69, 214, 255, 0.12);
+  border-color: var(--cyan);
   text-decoration: underline;
 }
 
@@ -956,7 +961,7 @@ h1 {
 }
 
 .method h3 i {
-  color: var(--muted);
+  color: var(--cyan);
 }
 
 .method p {
@@ -1004,9 +1009,9 @@ h1 {
 
 .tl-num {
   align-items: center;
-  background: var(--accent);
+  background: var(--cyan);
   border-radius: 50%;
-  color: #fff;
+  color: var(--bg);
   display: inline-flex;
   flex-shrink: 0;
   font-weight: 800;
@@ -1237,6 +1242,41 @@ h1 {
   margin: 1.2rem 0 0.5rem;
 }
 
+/* Tinted bands on alternating sections; the shadow trick paints the full width without extra wrappers. */
+.band {
+  background: var(--band);
+  box-shadow: 0 0 0 100vmax var(--band);
+  clip-path: inset(0 -100vmax);
+  padding-bottom: 4rem;
+}
+
+.band + .section {
+  margin-top: 0;
+}
+
+/* The logo mark is dark slate, so it sits on a white plate on dark grounds. */
+.mark-plate {
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 4px;
+}
+
+.mark-plate img {
+  display: block;
+  transform: scale(1.5);
+}
+
+.mark-plate-lg {
+  border-radius: 22px;
+  height: 96px;
+  margin-bottom: 1.2rem;
+  width: 96px;
+}
+
 /* Compare */
 
 .compare {
@@ -1248,34 +1288,123 @@ h1 {
 .compare th,
 .compare td {
   border-bottom: 1px solid var(--border);
-  padding: 0.8rem 0.9rem;
+  padding: 0.9rem;
   text-align: left;
+  vertical-align: top;
 }
 
-.compare thead th,
+.compare thead th {
+  color: var(--text);
+  vertical-align: bottom;
+}
+
 .compare tbody th {
   color: var(--text);
   font-weight: 600;
+  width: 16%;
 }
 
-.compare td {
+.head-brand {
+  align-items: center;
+  display: flex;
+  font-size: 1.15rem;
+  font-weight: 700;
+  gap: 0.6rem;
+}
+
+.vendor-logo {
+  display: block;
+  height: 28px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  width: auto;
+}
+
+.head-sub {
   color: var(--muted);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.45rem;
 }
 
-/* Tourbine's column sits on a lighter surface so it reads as the page's subject. */
+/* Tourbine's column sits on a lighter surface with a blue top edge so it reads as the page's subject. */
 .compare .col-us {
   background: var(--surface-2);
-  color: var(--text);
-  font-weight: 600;
 }
 
 .compare thead .col-us {
-  border-radius: 12px 12px 0 0;
+  border-radius: 14px 14px 0 0;
   border-top: 3px solid var(--accent);
 }
 
 .compare tbody tr:last-child .col-us {
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 14px 14px;
+}
+
+.cell-brand {
+  display: none;
+}
+
+.verdict {
+  display: grid;
+  gap: 0.15rem 0.55rem;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+}
+
+.verdict i {
+  font-size: 1rem;
+  grid-row: span 2;
+  margin-top: 0.15rem;
+}
+
+.verdict strong {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.verdict .detail {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.v-ok i {
+  color: var(--ok);
+}
+
+.v-warn i {
+  color: var(--warn);
+}
+
+.v-unk i {
+  color: var(--muted);
+}
+
+.deck-nav {
+  display: none;
+}
+
+/* Closing section */
+
+.final-cta {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid rgba(69, 214, 255, 0.25);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.final-cta h2 {
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+.final-cta .hero-cta {
+  justify-content: center;
 }
 
 /* Open source */
@@ -1326,7 +1455,7 @@ h1 {
 }
 
 .oss-links a:hover {
-  border-color: var(--accent-ink);
+  border-color: var(--cyan);
   transform: translateX(3px);
 }
 
@@ -1335,7 +1464,7 @@ h1 {
 }
 
 .oss-links i {
-  color: var(--muted);
+  color: var(--cyan);
   font-size: 1.1rem;
   text-align: center;
   width: 1.4rem;
@@ -1386,7 +1515,7 @@ h1 {
 }
 
 .faq-item summary i {
-  color: var(--muted);
+  color: var(--cyan);
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
@@ -1572,9 +1701,8 @@ h1 {
     width: 200px;
   }
 
-  /* Phones: one compact card per criterion. */
+  /* Phones: one criterion per card, swiped sideways with arrows as a fallback. */
   .compare,
-  .compare tbody,
   .compare tr,
   .compare th,
   .compare td {
@@ -1585,47 +1713,115 @@ h1 {
     display: none;
   }
 
+  /* Positioned so the absolute screen-reader labels inside stay within the scroll strip. */
   .compare tbody {
-    display: grid;
-    gap: 0.6rem;
+    position: relative;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .compare tbody::-webkit-scrollbar {
+    display: none;
   }
 
   .compare tbody tr {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
+    flex: 0 0 100%;
     overflow: hidden;
-  }
-
-  .compare th,
-  .compare td {
-    padding: 0.5rem 0.9rem;
+    scroll-snap-align: start;
   }
 
   .compare tbody th {
-    padding-top: 0.75rem;
+    font-size: 1.05rem;
+    padding: 0.9rem;
+    width: auto;
   }
 
   .compare td {
+    align-items: start;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 6.2rem minmax(0, 1fr);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .compare tbody tr td:last-child {
     border-bottom: 0;
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
   }
 
-  .compare td::before {
-    color: var(--muted);
-    content: attr(data-label);
-    font-weight: 400;
-  }
-
-  .compare td:not(.col-us) {
+  .cell-brand {
+    align-items: center;
     color: var(--text);
+    display: flex;
+    font-size: 0.85rem;
+    font-weight: 700;
+    gap: 0.4rem;
+    min-height: 1.4rem;
+  }
+
+  .cell-brand img {
+    height: 18px;
+    width: auto;
+  }
+
+  .cell-brand .mark-plate {
+    border-radius: 5px;
+    padding: 2px;
+  }
+
+  .cell-brand .mark-plate img {
+    height: 16px;
   }
 
   .compare .col-us,
   .compare tbody tr:last-child .col-us {
     border-radius: 0;
+  }
+
+  .js .deck-nav {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .deck-btn {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text);
+    display: inline-flex;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+  }
+
+  .deck-btn:hover {
+    border-color: var(--cyan);
+    transform: scale(1.06);
+  }
+
+  .deck-btn:active {
+    transform: scale(1);
+  }
+
+  .deck-btn:disabled {
+    opacity: 0.4;
+    transform: none;
+  }
+
+  .deck-count {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    margin: 0;
   }
 
   .methods,

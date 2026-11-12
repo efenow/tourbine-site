@@ -166,7 +166,7 @@
         </div>
       </section>
 
-      <section id="install" class="container section">
+      <section id="install" class="container section band">
         <h2>Install in one command</h2>
         <p class="section-lead">
           Tourbine runs as one Node.js process on port <strong>3000</strong>. The installer handles the setup
@@ -342,49 +342,67 @@ docker compose up -d --build</code></pre>
         </div>
       </section>
 
-      <section id="compare" class="container section" aria-labelledby="compare-title">
+      <section id="compare" class="container section band" aria-labelledby="compare-title">
         <h2 id="compare-title">How Tourbine compares</h2>
         <p class="section-lead">Kuula, CloudPano and Matterport are hosted subscriptions. Tourbine runs on your server. Competitor details are from their own sites, November 2026.</p>
+
+        <div class="deck-nav">
+          <button type="button" class="deck-btn" id="deck-prev" aria-label="Previous criterion"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+          <p class="deck-count" id="deck-count" aria-live="polite">1 / 4</p>
+          <button type="button" class="deck-btn" id="deck-next" aria-label="Next criterion"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
 
         <table class="compare" role="table">
           <caption class="sr-only">Tourbine compared with Kuula, CloudPano and Matterport</caption>
           <thead role="rowgroup">
             <tr role="row">
               <th scope="col" role="columnheader"><span class="sr-only">Criterion</span></th>
-              <th scope="col" role="columnheader" class="col-us">Tourbine</th>
-              <th scope="col" role="columnheader">Kuula</th>
-              <th scope="col" role="columnheader">CloudPano</th>
-              <th scope="col" role="columnheader">Matterport</th>
+              <th scope="col" role="columnheader" class="col-us">
+                <span class="head-brand"><span class="mark-plate"><img src="./assets/logos/tourbine-mark.png" alt="" width="28" height="28" /></span>Tourbine</span>
+                <span class="head-sub">Self-hosted, GPL-3.0</span>
+              </th>
+              <th scope="col" role="columnheader">
+                <img class="vendor-logo" src="./assets/logos/vendors/kuula.svg" alt="Kuula" width="96" height="32" />
+                <span class="head-sub">Hosted 360° tours</span>
+              </th>
+              <th scope="col" role="columnheader">
+                <img class="vendor-logo" src="./assets/logos/vendors/cloudpano.png" alt="CloudPano" width="130" height="32" />
+                <span class="head-sub">Hosted 360° tours</span>
+              </th>
+              <th scope="col" role="columnheader">
+                <img class="vendor-logo" src="./assets/logos/vendors/matterport.svg" alt="Matterport" width="156" height="32" />
+                <span class="head-sub">Hosted 3D digital twins</span>
+              </th>
             </tr>
           </thead>
-          <tbody role="rowgroup">
+          <tbody role="rowgroup" class="deck" tabindex="0" aria-label="Comparison by criterion">
             <tr role="row">
               <th scope="row" role="rowheader">Price</th>
-              <td role="cell" class="col-us" data-label="Tourbine">Free</td>
-              <td role="cell" data-label="Kuula">Free plan, paid tiers</td>
-              <td role="cell" data-label="CloudPano">Free to start, paid tiers</td>
-              <td role="cell" data-label="Matterport">Paid, by number of spaces</td>
+              <td role="cell" class="col-us"><span class="cell-brand" aria-hidden="true"><span class="mark-plate"><img src="./assets/logos/tourbine-mark.png" alt="" width="20" height="20" /></span>Tourbine</span><span class="verdict v-ok"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span class="sr-only">Yes: </span><strong>Free</strong><span class="detail">GPL-3.0, no paid tier</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/kuula.svg" alt="" width="60" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Free plan, paid tiers</strong><span class="detail">Pro and Business billed monthly or yearly</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/cloudpano.png" alt="" width="81" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Free to start, paid tiers</strong><span class="detail">Pro, Pro Plus and Commercial billed annually</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/matterport.svg" alt="" width="97" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Free account, paid plans</strong><span class="detail">Priced by number of active spaces</span></span></td>
             </tr>
             <tr role="row">
               <th scope="row" role="rowheader">Hosted on</th>
-              <td role="cell" class="col-us" data-label="Tourbine">Your server</td>
-              <td role="cell" data-label="Kuula">Kuula</td>
-              <td role="cell" data-label="CloudPano">CloudPano</td>
-              <td role="cell" data-label="Matterport">Matterport</td>
+              <td role="cell" class="col-us"><span class="cell-brand" aria-hidden="true"><span class="mark-plate"><img src="./assets/logos/tourbine-mark.png" alt="" width="20" height="20" /></span>Tourbine</span><span class="verdict v-ok"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span class="sr-only">Yes: </span><strong>Your server</strong><span class="detail">Database and uploads on your disk</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/kuula.svg" alt="" width="60" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Kuula's servers</strong><span class="detail">Custom domain on Business</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/cloudpano.png" alt="" width="81" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>CloudPano's servers</strong><span class="detail">Own domain on Pro Plus</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/matterport.svg" alt="" width="97" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Matterport's servers</strong><span class="detail">Counted as active spaces</span></span></td>
             </tr>
             <tr role="row">
               <th scope="row" role="rowheader">Limits</th>
-              <td role="cell" class="col-us" data-label="Tourbine">None</td>
-              <td role="cell" data-label="Kuula">300 posts on free</td>
-              <td role="cell" data-label="CloudPano">3 projects on Pro</td>
-              <td role="cell" data-label="Matterport">10 to 500 spaces</td>
+              <td role="cell" class="col-us"><span class="cell-brand" aria-hidden="true"><span class="mark-plate"><img src="./assets/logos/tourbine-mark.png" alt="" width="20" height="20" /></span>Tourbine</span><span class="verdict v-ok"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span class="sr-only">Yes: </span><strong>None</strong><span class="detail">100 MB per uploaded file</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/kuula.svg" alt="" width="60" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>300 posts on free</strong><span class="detail">100,000 on Pro, no limit on Business</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/cloudpano.png" alt="" width="81" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>3 projects on Pro</strong><span class="detail">Unlimited on Pro Plus</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/matterport.svg" alt="" width="97" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>10 to 500 spaces</strong><span class="detail">Set by Professional plan size</span></span></td>
             </tr>
             <tr role="row">
               <th scope="row" role="rowheader">Your own branding</th>
-              <td role="cell" class="col-us" data-label="Tourbine">Yes</td>
-              <td role="cell" data-label="Kuula">Pro plan</td>
-              <td role="cell" data-label="CloudPano">Pro Plus plan</td>
-              <td role="cell" data-label="Matterport">Not stated</td>
+              <td role="cell" class="col-us"><span class="cell-brand" aria-hidden="true"><span class="mark-plate"><img src="./assets/logos/tourbine-mark.png" alt="" width="20" height="20" /></span>Tourbine</span><span class="verdict v-ok"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span class="sr-only">Yes: </span><strong>Yes</strong><span class="detail">Embed view has no Tourbine label</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/kuula.svg" alt="" width="60" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Pro plan</strong><span class="detail">Swaps the Kuula logo for yours</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/cloudpano.png" alt="" width="81" height="20" /></span><span class="verdict v-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span class="sr-only">Limited: </span><strong>Pro Plus plan</strong><span class="detail">Pro only removes the watermark</span></span></td>
+              <td role="cell"><span class="cell-brand" aria-hidden="true"><img src="./assets/logos/vendors/matterport.svg" alt="" width="97" height="20" /></span><span class="verdict v-unk"><i class="fa-solid fa-circle-question" aria-hidden="true"></i><span class="sr-only">Unknown: </span><strong>Not stated</strong><span class="detail">Not listed on the plans page</span></span></td>
             </tr>
           </tbody>
         </table>
@@ -418,7 +436,7 @@ docker compose up -d --build</code></pre>
         </div>
       </section>
 
-      <section id="faq" class="container section">
+      <section id="faq" class="container section band">
         <h2>Questions before you install</h2>
         <div class="faq-list">
           <details class="faq-item" open>
@@ -448,6 +466,16 @@ docker compose up -d --build</code></pre>
         </div>
       </section>
 
+      <section class="container section">
+        <div class="final-cta">
+          <span class="mark-plate mark-plate-lg"><img src="./assets/logos/tourbine-mark.png" alt="" width="80" height="80" /></span>
+          <h2>Your next tour starts with one command</h2>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#install">Install Tourbine</a>
+            <a class="btn btn-ghost" href="https://github.com/efenow/tourbine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> Star on GitHub</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">

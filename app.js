@@ -301,6 +301,49 @@
     }
   });
 
+  // Comparison deck: on phones each criterion is a card in a horizontal scroll-snap strip.
+  var deck = document.querySelector('.compare .deck');
+  var deckPrev = document.getElementById('deck-prev');
+  var deckNext = document.getElementById('deck-next');
+  var deckCount = document.getElementById('deck-count');
+  if (deck && deckPrev && deckNext) {
+    var cards = deck.querySelectorAll('tr');
+    var deckStep = function () {
+      return deck.clientWidth + (parseFloat(getComputedStyle(deck).columnGap) || 0);
+    };
+    var deckIndex = function () {
+      return Math.round(deck.scrollLeft / (deckStep() || 1));
+    };
+    // Target card while a smooth scroll runs, so quick taps advance one card each.
+    var deckTarget = null;
+    var deckSettle = null;
+    var deckUpdate = function () {
+      var i = deckTarget !== null ? deckTarget : Math.min(deckIndex(), cards.length - 1);
+      deckCount.textContent = (i + 1) + ' / ' + cards.length;
+      deckPrev.disabled = i === 0;
+      deckNext.disabled = i === cards.length - 1;
+      clearTimeout(deckSettle);
+      deckSettle = setTimeout(function () { deckTarget = null; }, 150);
+    };
+    var deckGo = function (step) {
+      var from = deckTarget !== null ? deckTarget : deckIndex();
+      deckTarget = Math.max(0, Math.min(cards.length - 1, from + step));
+      deck.scrollTo({ left: deckTarget * deckStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+      deckUpdate();
+    };
+    deckPrev.addEventListener('click', function () { deckGo(-1); });
+    deckNext.addEventListener('click', function () { deckGo(1); });
+    deck.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        deckGo(e.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    deck.addEventListener('scroll', deckUpdate, { passive: true });
+    window.addEventListener('resize', deckUpdate);
+    deckUpdate();
+  }
+
   // Reveal on scroll
 
   var reveals = document.querySelectorAll('.reveal');
