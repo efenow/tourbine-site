@@ -21,6 +21,11 @@ Dial: ENERGY 2 / RHYTHM 2 / MOTION 2
 - Green `#9be8c4` and amber `#f5c26b` only for status: the detected OS, `GET` routes, and the comparison verdicts, each paired with an icon.
 - No decorative gradients or blurred orbs (owner chose color from the logo over the old violet-to-cyan look). Blur only on the sticky header and the hero card, which both sit over the moving panorama.
 
+## Copy
+
+- Readers are the people who make and share tours, not developers. Use plain words; keep commands, file paths and developer terms inside the install steps and the "install manually" details.
+- No audience labels on the page itself.
+
 ## Type
 
 - Inter for everything. Its tall x-height keeps small labels readable over photos and in dense install steps, and its plain shapes leave the panorama as the focal point.

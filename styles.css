@@ -814,10 +814,11 @@ h1 {
   margin-right: 0.35rem;
 }
 
+/* Hover shows an outline ring, not underlined text. */
 .install-tab:hover {
   background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--cyan);
   color: var(--text);
-  text-decoration: underline;
 }
 
 .install-tab.active {
@@ -921,7 +922,6 @@ h1 {
 .copy-btn:hover {
   background: rgba(69, 214, 255, 0.12);
   border-color: var(--cyan);
-  text-decoration: underline;
 }
 
 .copy-btn:active {
@@ -1049,9 +1049,17 @@ h1 {
   padding: 1rem 1.2rem;
 }
 
-.manual summary:hover,
 .faq-item summary:hover {
   text-decoration: underline;
+}
+
+.manual summary:hover {
+  background: rgba(69, 214, 255, 0.06);
+  border-radius: 16px;
+}
+
+.manual summary:hover .chev {
+  color: var(--cyan);
 }
 
 .manual summary::-webkit-details-marker,
@@ -1187,59 +1195,6 @@ h1 {
 .dev-card > p {
   color: var(--muted);
   margin: 0 0 1rem;
-}
-
-.routes {
-  display: grid;
-  gap: 0.45rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.routes li {
-  align-items: center;
-  background: var(--bg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  display: grid;
-  gap: 0.15rem 0.7rem;
-  grid-template-columns: 3.6rem auto;
-  padding: 0.55rem 0.75rem;
-}
-
-.routes code {
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 0.88rem;
-}
-
-.routes li > span:last-child {
-  color: var(--muted);
-  font-size: 0.85rem;
-  grid-column: 2;
-}
-
-.verb {
-  background: var(--surface-2);
-  border-radius: 6px;
-  color: var(--ok);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.12rem 0;
-  text-align: center;
-}
-
-.verb-page {
-  color: var(--accent-ink);
-}
-
-.dev-card > .routes-title {
-  color: var(--text);
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin: 1.2rem 0 0.5rem;
 }
 
 /* Tinted bands on alternating sections; the shadow trick paints the full width without extra wrappers. */
@@ -1473,8 +1428,7 @@ h1 {
 .oss-links span {
   color: var(--muted);
   display: grid;
-  font-family: var(--mono);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
 }
 
 .oss-links strong {

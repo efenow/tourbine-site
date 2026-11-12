@@ -20,13 +20,13 @@
 
   // Pitch/yaw picked from assets/pano/cafeteria.jpg.
   var STOPS = [
-    { label: 'Hotspot', icon: 'fa-route', pitch: -3, yaw: -4,
-      title: 'Hotspot', text: 'Hotspots link one room to the next, with a label. This one opens the feature list.',
+    { label: 'Room link', icon: 'fa-route', pitch: -3, yaw: -4,
+      title: 'Room link', text: 'Room links take visitors to the next room. This one opens the feature list.',
       href: '#features', action: 'See features' },
     { label: 'Info point', icon: 'fa-circle-info', pitch: -18, yaw: -97,
-      title: 'Info point', text: 'Pin a title and text anywhere in a 360° or still image.' },
-    { label: 'Privacy editor', icon: 'fa-shield-halved', pitch: -7, yaw: 88,
-      title: 'Privacy editor', text: 'Blur or mosaic sensitive details, like locker numbers, before upload.' },
+      title: 'Info point', text: 'Pin a title and short text anywhere in a photo.' },
+    { label: 'Privacy blur', icon: 'fa-shield-halved', pitch: -7, yaw: 88,
+      title: 'Privacy blur', text: 'Blur private details, like locker numbers, before you upload.' },
     { label: 'Exit: install', icon: 'fa-door-open', pitch: 53, yaw: 76,
       title: 'Way out', text: 'Follow the exit sign to install Tourbine in one command.',
       href: '#install', action: 'Install now' }
